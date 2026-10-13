@@ -3,3 +3,4 @@ __pycache__/
 .claude/
 tickets/
 .venv/
+.streamlit/secrets.toml
