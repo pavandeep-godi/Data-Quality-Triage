@@ -68,3 +68,12 @@ The key is never typed into the app. Set it once:
 - `dq_checks.py`: read-only checks and suggested fixes
 - `generate_data.py`: builds the two sample CSVs (500 rows x 20 columns, synthetic data)
 - `dq_agent.py`: earlier standalone prototype of the triage loop with column-level lineage and quarantine
+
+## Tests
+```bash
+python tests/run_tests.py
+```
+Runs ~90 checks with no network access (Groq is mocked): data files, every detector, fix accuracy against the hidden
+ground truth, every page and navigation link, the full ticket flow, Smart AI vs Standard (including rate limits, outages,
+bad replies and a retired model), Secrets layouts, awkward uploads (missing/extra columns, empty file, hostile column
+names), and security/hygiene checks (no committed keys, data minimisation, HTML escaping).

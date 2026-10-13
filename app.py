@@ -2,6 +2,7 @@
 The AI never edits data: it flags issues and drafts a ticket. A person clicks to apply a suggestion,
 and even then only an in-session copy changes; the CSV files on disk are never touched."""
 import datetime as dt
+import html
 import os
 import pathlib
 import altair as alt
@@ -70,8 +71,44 @@ with st.sidebar:
                     "available one automatically.\n"
                     "- Output can vary between runs. Data goes to a third party.")
 
-good = dq.load(up_good or DATA / "good_data.csv")
-bad = dq.load(up_bad or DATA / "bad_data.csv")
+def _load(src, label):
+    """Read an uploaded or bundled CSV; stop with a clear message instead of a stack trace if it cannot be read."""
+    try:
+        if hasattr(src, "seek"):
+            src.seek(0)
+        return dq.load(src)
+    except Exception as e:
+        st.error(f"Could not read the {label} file as a CSV ({type(e).__name__}). "
+                 "Please upload a valid CSV that has a header row.")
+        st.stop()
+
+
+good = _load(up_good or DATA / "good_data.csv", "good (reference)")
+bad = _load(up_bad or DATA / "bad_data.csv", "bad")
+
+
+def _input_problems(g, b):
+    """Things that make a comparison impossible. Returned as readable sentences."""
+    out = []
+    if g.empty:
+        out.append("The good (reference) file has no data rows, so there is nothing to learn from.")
+    if b.empty:
+        out.append("The bad file has no data rows, so there is nothing to check.")
+    missing = [c for c in g.columns if c not in b.columns]
+    extra = [c for c in b.columns if c not in g.columns]
+    if missing:
+        out.append("The bad file is missing columns that the good file has: " + ", ".join(f"`{c}`" for c in missing[:10]))
+    if extra:
+        out.append("The bad file has columns the good file does not: " + ", ".join(f"`{c}`" for c in extra[:10]))
+    return out
+
+
+_problems = _input_problems(good, bad)
+if _problems:
+    st.error("**These two files cannot be compared yet.**\n\n" + "\n".join("- " + p for p in _problems) +
+             "\n\nBoth files need the same column names. Fix the files, or clear the uploads in the sidebar to use "
+             "the bundled samples.")
+    st.stop()
 sig = (up_good.name if up_good else "default", up_bad.name if up_bad else "default", len(bad))
 if st.session_state.get("sig") != sig:  # new files -> reset ticket state (keep widget state such as the method filter)
     for k in ("work", "applied", "ticket", "ticket_open"):
@@ -315,7 +352,7 @@ def file_card(name, df, iss):
         if sub.empty:
             rows += f'<div class="dq-row"><span class="dq-dot ok">✓</span>{label}</div>'
         else:
-            cols = ", ".join(sub["column"].unique()[:3])
+            cols = ", ".join(html.escape(str(c)) for c in sub["column"].unique()[:3])  # CSV headers are untrusted
             rows += (f'<div class="dq-row"><span class="dq-dot no">✕</span>{label} <span class="c">in {cols}</span>'
                      f'<span class="n">{len(sub)}</span></div>')
     if ok:
