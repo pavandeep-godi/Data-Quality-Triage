@@ -29,7 +29,7 @@ Nothing is changed until a person clicks **Apply suggested fix**, and then only 
 Each ticket shows who wrote the analysis (`Groq (<model>)` or `Rule-based templates`).
 
 ### Choosing the analysis method
-When raising a ticket, the user picks one of two options (there is no way to enter an API key in the app):
+A filter in the sidebar (**Analysis method**) lets the user pick one of two options for the next ticket. There is no way to enter an API key in the app:
 
 | Option | In plain words | When it is used |
 |---|---|---|
@@ -39,7 +39,7 @@ When raising a ticket, the user picks one of two options (there is no way to ent
 - If the Smart AI is rate-limited, down or returns a bad reply, the ticket **falls back to Standard automatically** and says why.
 - Inside a ticket, **Try Smart AI analysis (Groq) again** / **Switch to Standard analysis** re-runs the analysis (this resets
   the working copy, because the fix choices change).
-- If no key is configured, only Standard is offered.
+- If no key is configured, Standard is selected by default and the sidebar says Smart AI is not set up (choosing it anyway still produces a Standard ticket, with a note).
 
 ### Setting up Groq (app owner only)
 The key is never typed into the app. Set it once:

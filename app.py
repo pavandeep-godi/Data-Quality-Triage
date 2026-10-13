@@ -15,6 +15,12 @@ DATA = pathlib.Path(__file__).parent / "data"
 COLORS = {"null": "#f8b4b4", "empty": "#fdd5a5", "type": "#d4b8f5", "anomaly": "#fbe88a",
           "category": "#a8d8f0", "format": "#a8d8f0", "rule": "#b8e0b8", "duplicate": "#e0e0e0"}
 
+GROQ_LABEL = "🤖 Smart AI analysis (Groq)"
+STD_LABEL = "⚙️ Standard analysis"
+METHOD_HELP = {GROQ_LABEL: "An AI reads the problems like a data expert, explains what probably went wrong and "
+                           "suggests the best fix for each one. Uses a limited free quota, so it can occasionally be busy.",
+               STD_LABEL: "Simple built-in checks and fixed advice. No AI involved. Always works, instantly."}
+
 # ---------------------------------------------------------------- inputs
 with st.sidebar:
     st.header("Input files")
@@ -24,7 +30,7 @@ with st.sidebar:
     st.divider()
     st.caption("Read-only analysis: the AI flags problems but never changes your data.")
     st.divider()
-    st.subheader("AI engine (optional)")
+    st.subheader("Analysis method")
 
 
     def _secret(name):
@@ -36,12 +42,15 @@ with st.sidebar:
 
     GROQ_KEY = _secret("GROQ_API_KEY") or os.environ.get("GROQ_API_KEY") or ""
     GROQ_MODEL = _secret("GROQ_MODEL") or os.environ.get("GROQ_MODEL") or llm.DEFAULT_MODEL
-    if GROQ_KEY:
-        st.success("Smart AI analysis is available. Pick a method when raising a ticket.")
-        st.caption("The key's free-tier quota is shared by everyone using this app. Sent to Groq: issue counts and up to "
-                   "5 sample bad values per problem, never the full file.")
+    st.radio("How should problems be analysed and fixes suggested?", [GROQ_LABEL, STD_LABEL],
+             index=0 if GROQ_KEY else 1, key="analysis_mode", captions=[METHOD_HELP[GROQ_LABEL], METHOD_HELP[STD_LABEL]],
+             help="Applies to the next ticket you raise. If the Smart AI is busy or unavailable, the ticket automatically "
+                  "uses the Standard analysis, and you can switch from inside the ticket.")
+    if not GROQ_KEY:
+        st.warning("Smart AI analysis is not set up on this app yet, so Standard analysis will be used either way.")
     else:
-        st.info("Smart AI analysis is not set up on this app, so the standard analysis is used.")
+        st.caption("Smart AI sends issue counts and up to 5 sample bad values per problem to Groq, never the full file. "
+                   "Its free quota is shared by everyone using this app.")
     with st.expander("Free-tier limits"):
         st.markdown("- **Rate limits** apply per organisation and vary by model. Roughly 30 requests/min, 12k tokens/min "
                     "and 1k requests/day have been reported for the default model; check your Groq console for live numbers.\n"
@@ -52,8 +61,9 @@ with st.sidebar:
 good = dq.load(up_good or DATA / "good_data.csv")
 bad = dq.load(up_bad or DATA / "bad_data.csv")
 sig = (up_good.name if up_good else "default", up_bad.name if up_bad else "default", len(bad))
-if st.session_state.get("sig") != sig:  # new files -> reset ticket state
-    st.session_state.clear()
+if st.session_state.get("sig") != sig:  # new files -> reset ticket state (keep widget state such as the method filter)
+    for k in ("work", "applied", "ticket", "ticket_open"):
+        st.session_state.pop(k, None)
     st.session_state.sig = sig
 
 
@@ -140,11 +150,11 @@ if page == PAGES[0]:
         st.markdown("- Changes your data on its own\n- Edits the files on disk\n- Pushes a failing file to the next stage\n"
                     "- Applies a fix without a person clicking it")
 
-    st.info("**How the AI part works.** Finding problems is rule-based and deterministic. With a Groq API key in the sidebar, "
-            "an LLM then analyses the problems, explains the likely cause, and **chooses the best fix for each one** from "
-            "options the rule engine can compute exactly (or recommends manual review). You can instead pick the **Standard** "
-            "method (built-in rules, no AI) when raising a ticket, and a ticket falls back to it automatically if Groq is "
-            "rate-limited or down. Either way, nothing changes until a person clicks.")
+    st.info("**How the AI part works.** Finding problems is rule-based and deterministic. Use the **Analysis method** filter "
+            "in the sidebar to choose how the ticket is written: **Smart AI analysis (Groq)**, where an AI explains the likely "
+            "causes and chooses the best fix for each problem from options the rules can compute exactly (or recommends manual "
+            "review), or **Standard analysis**, which uses built-in rules and text with no AI. If the Smart AI is rate-limited "
+            "or down, the ticket falls back to Standard automatically. Either way, nothing changes until a person clicks.")
     st.markdown("### How it works, in 4 steps")
     s1, s2, s3, s4 = st.columns(4)
     for col, n, title, body in ((s1, "1", "Learn", "Reads the good file and learns each column's type, range and allowed values."),
@@ -199,7 +209,8 @@ def build_analysis(issues, use_groq=True):
     summary = (f"{len(issues)} problems were found in {issues['column'].nunique()} of {bad.shape[1]} columns "
                "when bad_data.csv was checked against the profile learned from the reference file.")
     if not (GROQ_KEY and use_groq):
-        return {"summary": summary, "analysis": base, "engine": "Standard (rule-based)", "note": "", "choices": {}}
+        note = "Smart AI analysis is not set up on this app, so the standard analysis was used." if use_groq else ""
+        return {"summary": summary, "analysis": base, "engine": "Standard (rule-based)", "note": note, "choices": {}}
     try:
         res = llm.analyse(llm.summarise(issues, prof, len(bad)), GROQ_KEY, GROQ_MODEL)
     except llm.LLMError as e:
@@ -349,23 +360,12 @@ if page == PAGES[3]:
                      "data owner's name** with a suggested fix for each problem. It will not change any data.")
             owner = st.text_input("Data owner (the ticket will be raised in this name)", key="owner",
                                   placeholder="e.g. Priya Sharma")
-            GROQ_LABEL = "🤖 Smart AI analysis (Groq)"
-            STD_LABEL = "⚙️ Standard analysis"
-            captions = {GROQ_LABEL: "An AI reads the problems like a data expert, explains what probably went wrong and "
-                                    "suggests the best fix for each one. Uses a limited free quota, so it can occasionally be busy.",
-                        STD_LABEL: "Simple built-in checks and fixed advice. No AI involved. Always works, instantly."}
-            options = [GROQ_LABEL, STD_LABEL] if GROQ_KEY else [STD_LABEL]
-            mode = st.radio("How should the problems be analysed?", options, key="analysis_mode",
-                            captions=[captions[o] for o in options],
-                            help="If the Smart AI is busy or unavailable, the ticket automatically uses the Standard "
-                                 "analysis instead, and you can switch from the ticket at any time.")
-            if not GROQ_KEY:
-                st.caption("Smart AI analysis is not set up on this app, so the standard analysis is used.")
+            st.caption(f"Analysis method: **{st.session_state.analysis_mode}** (change it in the sidebar)")
             if st.button("Yes, analyse and raise a ticket", type="primary", disabled=not owner.strip()):
                 with st.spinner("Analysing issues and drafting the ticket..."):
                     st.session_state.ticket = {"id": f"DQ-{dt.datetime.now():%Y%m%d-%H%M}", "opened": dt.datetime.now(),
                                                "owner": owner.strip(),
-                                               **build_analysis(bad_issues, mode == GROQ_LABEL)}
+                                               **build_analysis(bad_issues, st.session_state.analysis_mode == GROQ_LABEL)}
                 st.session_state.ticket_open = False
                 go(PAGES[4])
                 st.rerun()
