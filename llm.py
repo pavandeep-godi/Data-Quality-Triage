@@ -10,7 +10,8 @@ import pandas as pd
 import requests
 
 URL = "https://api.groq.com/openai/v1/chat/completions"
-DEFAULT_MODEL = "llama-3.3-70b-versatile"  # override in the sidebar / GROQ_MODEL if Groq retires it
+MODELS_URL = "https://api.groq.com/openai/v1/models"
+DEFAULT_MODEL = "llama-3.3-70b-versatile"  # if unavailable, the best available model is picked automatically
 
 SYSTEM = (
     "You are a data-quality analyst writing a support ticket for a data owner. You are given a JSON list of "
@@ -59,21 +60,67 @@ def summarise(issues, prof, n_rows):
     return out
 
 
-def analyse(items, api_key, model=DEFAULT_MODEL, timeout=30):
-    """Returns {"summary": str, "causes": {(column, check): {cause, step, option, rationale}}}. Raises LLMError."""
+# Preferred chat models, best first. If none of these exist on the account, any other active chat model is used.
+PREFERRED = ["llama-3.3-70b-versatile", "openai/gpt-oss-120b", "openai/gpt-oss-20b", "qwen/qwen3-32b",
+             "llama-3.1-8b-instant"]
+NOT_CHAT = ("whisper", "guard", "tts", "playai", "orpheus", "embed", "compound", "safeguard", "vision", "scout-guard")
+_models_cache = {}
+
+
+def available_models(api_key, timeout=15):
+    """Ids of active chat models on this Groq account (cached for the process)."""
+    if api_key in _models_cache:
+        return _models_cache[api_key]
     try:
-        r = requests.post(URL, timeout=timeout,
-                          headers={"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"},
-                          json={"model": model, "temperature": 0.2, "max_tokens": 2500, "response_format": {"type": "json_object"},
-                                "messages": [{"role": "system", "content": SYSTEM},
-                                             {"role": "user", "content": json.dumps(items)}]})
+        r = requests.get(MODELS_URL, headers={"Authorization": f"Bearer {api_key}"}, timeout=timeout)
+        data = r.json()["data"] if r.status_code == 200 else []
+    except (requests.RequestException, ValueError, KeyError):
+        return []
+    ids = sorted(m["id"] for m in data if m.get("active", True) and not any(x in m["id"].lower() for x in NOT_CHAT))
+    _models_cache[api_key] = ids
+    return ids
+
+
+def pick_model(api_key, wanted=None):
+    """The wanted model if it exists, else the best available one, else None."""
+    ids = available_models(api_key)
+    for m in ([wanted] if wanted else []) + PREFERRED:
+        if m in ids:
+            return m
+    return ids[0] if ids else None
+
+
+def _post(api_key, model, items, json_mode, timeout):
+    body = {"model": model, "temperature": 0.2, "max_tokens": 4000,
+            "messages": [{"role": "system", "content": SYSTEM}, {"role": "user", "content": json.dumps(items)}]}
+    if json_mode:
+        body["response_format"] = {"type": "json_object"}
+    try:
+        return requests.post(URL, timeout=timeout, json=body,
+                             headers={"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"})
     except requests.RequestException as e:
         raise LLMError(f"could not reach Groq ({type(e).__name__})") from e
+
+
+def analyse(items, api_key, model=DEFAULT_MODEL, timeout=30):
+    """Returns {"summary", "causes": {(column, check): {cause, step, option, rationale}}, "model"}. Raises LLMError.
+    If the model is unknown (404/decommissioned), it asks Groq which models exist and retries once with the best one."""
+    used, json_mode = model, True
+    r = _post(api_key, used, items, json_mode, timeout)
+    if r.status_code in (400, 404) and "model" in r.text.lower():  # retired / unknown model
+        alt = pick_model(api_key)
+        if alt and alt != used:
+            used = alt
+            r = _post(api_key, used, items, json_mode, timeout)
+    if r.status_code == 400 and json_mode:  # some models reject JSON mode: ask for JSON in plain text instead
+        r = _post(api_key, used, items, False, timeout)
     if r.status_code != 200:
-        hint = {401: "invalid API key", 429: "free-tier rate limit reached, wait a minute and retry", 404: "model not found", 400: "request rejected (check the model name)"}
-        raise LLMError(f"Groq returned {r.status_code}: {hint.get(r.status_code, 'error')}")
+        hint = {401: "invalid API key", 429: "free-tier rate limit reached, wait a minute and retry",
+                404: "no usable model found on this account", 400: "request rejected"}
+        raise LLMError(f"Groq returned {r.status_code}: {hint.get(r.status_code, 'error')} (model tried: {used})")
     try:
-        data = json.loads(r.json()["choices"][0]["message"]["content"])
+        text = r.json()["choices"][0]["message"]["content"]
+        data = json.loads(text[text.index("{"): text.rindex("}") + 1])  # tolerate prose around the JSON
         valid = {(i["column"], i["check"]): [o["id"] for o in i["options"]] for i in items}
         causes = {}
         for f in data["findings"]:
@@ -85,6 +132,6 @@ def analyse(items, api_key, model=DEFAULT_MODEL, timeout=30):
                 opt = valid[k][0]
             causes[k] = {"cause": str(f["likely_cause"])[:300], "step": str(f["next_step"])[:300],
                          "option": opt, "rationale": str(f.get("rationale", ""))[:300]}
-        return {"summary": str(data["summary"])[:800], "causes": causes}
+        return {"summary": str(data["summary"])[:800], "causes": causes, "model": used}
     except (KeyError, IndexError, ValueError, TypeError) as e:
         raise LLMError("Groq reply was not in the expected format") from e

@@ -237,7 +237,7 @@ def build_analysis(issues, use_groq=True):
             choices[f"{col}|{chk}"] = {"option": c["option"], "rationale": c["rationale"]}
         else:  # model skipped this one: keep the rule-based text and fix
             lines.append(head + base[len(lines)].split("). ", 1)[-1])
-    return {"summary": res["summary"], "analysis": lines, "engine": f"Groq ({GROQ_MODEL})", "note": "",
+    return {"summary": res["summary"], "analysis": lines, "engine": f"Groq ({res.get('model', GROQ_MODEL)})", "note": "",
             "choices": choices}
 
 
