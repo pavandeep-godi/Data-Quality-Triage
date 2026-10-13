@@ -66,7 +66,8 @@ with st.sidebar:
         st.markdown("- **Rate limits** apply per organisation and vary by model. Roughly 30 requests/min, 12k tokens/min "
                     "and 1k requests/day have been reported for the default model; check your Groq console for live numbers.\n"
                     "- This app makes **one request per ticket**. If the limit is hit, it falls back to built-in rules.\n"
-                    "- No uptime guarantee, and models get retired: change the model name if you see a 404.\n"
+                    "- No uptime guarantee, and models get retired. If the default model is gone, the app switches to another "
+                    "available one automatically.\n"
                     "- Output can vary between runs. Data goes to a third party.")
 
 good = dq.load(up_good or DATA / "good_data.csv")

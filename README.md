@@ -46,7 +46,8 @@ The key is never typed into the app. Set it once:
 - **Streamlit Cloud:** add `GROQ_API_KEY = "gsk_..."` under the app's **Secrets** (optionally `GROQ_MODEL`).
 - **Local:** put the same lines in `.streamlit/secrets.toml` (git-ignored) or set `GROQ_API_KEY` in the environment.
 - Never commit the key. Its free-tier quota is shared by everyone using the app.
-- Default model is `llama-3.3-70b-versatile`; set `GROQ_MODEL` if Groq retires it.
+- Model: defaults to `llama-3.3-70b-versatile`. If Groq retires it (a 404 "model not found"), the app asks Groq which
+  models the account can use and switches to the best available one automatically. `GROQ_MODEL` in Secrets is optional.
 - Sent to Groq: issue counts, expected ranges/values and up to 5 sample bad values per problem, never the full file.
 
 ## Limitations
@@ -54,7 +55,7 @@ The key is never typed into the app. Set it once:
   categories, seasonal ranges) can be flagged wrongly or missed.
 - **Groq free tier.** Rate limits apply per organisation and vary by model; reported figures for the default model are
   roughly 30 requests/min, 12k tokens/min and 1k requests/day, but these change, so check your Groq console. There is no
-  uptime guarantee and models get retired (a 404 means: change the model name). The app uses one request per ticket and
+  uptime guarantee and models get retired (the app then switches to another available model by itself). The app uses one request per ticket and
   falls back to the Standard method if the limit is hit or Groq is unreachable, and users can also choose Standard up front.
 - **LLM output can be wrong or vary between runs.** It only chooses among computable fixes or recommends manual review.
 - **Privacy.** With a key set, the summary above goes to a third party. This demo uses synthetic data only.
