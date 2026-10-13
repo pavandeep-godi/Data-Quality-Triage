@@ -46,9 +46,12 @@ def learn_reference(ref: pd.DataFrame) -> dict:
 def run_checks(df: pd.DataFrame, prof: dict) -> pd.DataFrame:
     out = []
 
+    cur = {}  # per-column generic alternative (statistical fill), attached to every issue in that column
+
     def add(row, col, check, msg, fix=None, fix_desc="Manual review needed"):
         out.append({"row": int(row), "column": col, "check": check, "value": df.at[row, col],
-                    "message": msg, "fix_value": fix, "fix_desc": fix_desc})
+                    "message": msg, "fix_value": fix, "fix_desc": fix_desc,
+                    "alt_value": cur.get("v"), "alt_desc": cur.get("d")})
 
     # figures used to build suggestions come from valid values in *this* file
     valid_num = {c: _num(df[c]).dropna() for c in df.columns if prof[c]["kind"] in ("int", "float")}
@@ -71,6 +74,12 @@ def run_checks(df: pd.DataFrame, prof: dict) -> pd.DataFrame:
             return m, f"Fill with most common city for country {df.at[i, 'country']} ('{m}')"
         med = valid_num[c].median() if c in valid_num and len(valid_num[c]) else p.get("median")
         med_txt = None if med is None else (str(int(round(med))) if kind == "int" else f"{med:.2f}")
+        if med_txt is not None:
+            cur["v"], cur["d"] = med_txt, f"Fill with the column median ({med_txt})"
+        elif mode is not None:
+            cur["v"], cur["d"] = mode, f"Fill with the column's most common value ('{mode}')"
+        else:
+            cur.clear()
 
         for i in s.index[s.isna()]:  # null
             if kind in ("int", "float"):
@@ -133,6 +142,7 @@ def run_checks(df: pd.DataFrame, prof: dict) -> pd.DataFrame:
             for i in present.index[~present.str.match(EMAIL)]:
                 add(i, c, "format", f"'{present[i]}' is not a valid email")
 
+    cur.clear()
     found = {(o["row"], o["column"]) for o in out}
     od, sd = pd.to_datetime(df["order_date"], errors="coerce"), pd.to_datetime(df["ship_date"], errors="coerce")
     for i in df.index[(sd < od)]:
@@ -143,4 +153,5 @@ def run_checks(df: pd.DataFrame, prof: dict) -> pd.DataFrame:
         for i in df.index[bad]:
             if (i, "unit_price") not in found:  # otherwise it is the same root cause
                 add(i, "total_amount", "rule", "total_amount != quantity x unit_price x (1 - discount)")
-    return pd.DataFrame(out, columns=["row", "column", "check", "value", "message", "fix_value", "fix_desc"])
+    return pd.DataFrame(out, columns=["row", "column", "check", "value", "message", "fix_value", "fix_desc",
+                                          "alt_value", "alt_desc"])

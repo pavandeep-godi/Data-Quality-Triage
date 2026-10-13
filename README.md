@@ -13,14 +13,38 @@ python generate_data.py      # optional: recreates data/good_data.csv and data/b
 streamlit run app.py
 ```
 
-## Optional: LLM-written ticket analysis (Groq)
-Detection and the suggested-fix values are rule-based and deterministic. If a [Groq](https://console.groq.com) API key
-is available, an LLM also writes the root-cause analysis and ticket summary. Without a key, built-in text is used.
+## How the "AI" works
+Two layers, so every number stays checkable:
 
+1. **Detection (always on, rule-based, deterministic).** The good file is profiled (type, range, allowed values) and the
+   bad file is checked against it: nulls, blanks, wrong types, out-of-range values, unexpected categories, bad formats,
+   duplicate keys and cross-field rules. For each problem the rule engine can compute exact candidate fixes.
+2. **Analysis and fix selection (optional, Groq LLM).** With a [Groq](https://console.groq.com) API key, one request per
+   ticket asks the model to explain the likely cause of each problem, **choose the best fix** from the candidates the rule
+   engine offers (or recommend manual review when filling would fabricate data, e.g. emails), and write the ticket summary.
+   The model cannot invent values: an unknown choice falls back to the rule-based fix. Without a key (or on any error),
+   built-in rules and text are used.
+
+Nothing is changed until a person clicks **Apply suggested fix**, and then only an in-session copy changes.
+Each ticket shows who wrote the analysis (`Groq (<model>)` or `Rule-based templates`).
+
+### Using Groq
 - Local: paste the key in the sidebar (kept in the browser session only), or set `GROQ_API_KEY` in the environment.
 - Streamlit Cloud: add `GROQ_API_KEY = "gsk_..."` under the app's **Secrets**. Never commit the key.
-- Optional `GROQ_MODEL` overrides the default model (`llama-3.3-70b-versatile`).
-- Sent to Groq: issue counts and up to 5 sample bad values per problem, never the full file.
+- Optional `GROQ_MODEL` (or the sidebar Model box) overrides the default `llama-3.3-70b-versatile`.
+- Sent to Groq: issue counts, expected ranges/values and up to 5 sample bad values per problem, never the full file.
+
+## Limitations
+- **Reference-dependent checks.** The profile comes from the good file, so anything it does not cover (new valid
+  categories, seasonal ranges) can be flagged wrongly or missed.
+- **Groq free tier.** Rate limits apply per organisation and vary by model; reported figures for the default model are
+  roughly 30 requests/min, 12k tokens/min and 1k requests/day, but these change, so check your Groq console. There is no
+  uptime guarantee and models get retired (a 404 means: change the model name). The app uses one request per ticket and
+  falls back to built-in rules if the limit is hit or Groq is unreachable.
+- **LLM output can be wrong or vary between runs.** It only chooses among computable fixes or recommends manual review.
+- **Privacy.** With a key set, the summary above goes to a third party. This demo uses synthetic data only.
+- **Demo scope.** Mock tickets (nothing goes to a real ticketing system), one pair of files at a time, and state is kept
+  per browser session.
 
 ## Files
 - `app.py`: Streamlit dashboard (About, Overview, Good data, Bad data, Support ticket)

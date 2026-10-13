@@ -42,7 +42,13 @@ with st.sidebar:
         st.success("Groq key set: an LLM will write the ticket analysis.")
         st.caption("Sent to Groq: issue counts and up to 5 sample bad values per problem. Never the full file.")
     else:
-        st.info("No key: ticket analysis uses built-in rule-based text.")
+        st.info("No key: ticket analysis and fixes use built-in rules.")
+    with st.expander("Free-tier limits"):
+        st.markdown("- **Rate limits** apply per organisation and vary by model. Roughly 30 requests/min, 12k tokens/min "
+                    "and 1k requests/day have been reported for the default model; check your Groq console for live numbers.\n"
+                    "- This app makes **one request per ticket**. If the limit is hit, it falls back to built-in rules.\n"
+                    "- No uptime guarantee, and models get retired: change the model name if you see a 404.\n"
+                    "- Output can vary between runs. Data goes to a third party.")
 
 good = dq.load(up_good or DATA / "good_data.csv")
 bad = dq.load(up_bad or DATA / "bad_data.csv")
@@ -135,9 +141,10 @@ if page == PAGES[0]:
         st.markdown("- Changes your data on its own\n- Edits the files on disk\n- Pushes a failing file to the next stage\n"
                     "- Applies a fix without a person clicking it")
 
-    st.info("**How the AI part works.** Detecting problems and computing the suggested fix values is rule-based and "
-            "deterministic, so every number can be checked. If a Groq API key is added in the sidebar, an LLM also "
-            "writes the root-cause analysis and ticket summary. Without a key, built-in text is used.")
+    st.info("**How the AI part works.** Finding problems is rule-based and deterministic. With a Groq API key in the sidebar, "
+            "an LLM then analyses the problems, explains the likely cause, and **chooses the best fix for each one** from "
+            "options the rule engine can compute exactly (or recommends manual review). Without a key, built-in rules and "
+            "text are used. Either way, nothing changes until a person clicks.")
     st.markdown("### How it works, in 4 steps")
     s1, s2, s3, s4 = st.columns(4)
     for col, n, title, body in ((s1, "1", "Learn", "Reads the good file and learns each column's type, range and allowed values."),
@@ -167,6 +174,18 @@ if page == PAGES[0]:
         "46.50 / 15.50 = **3**.\n"
         "- **Row 4, `unit_price` is 1210.69.** Far outside the normal range. Suggested fix: total / quantity = 48.40 / 4 = **12.10**.")
 
+    st.markdown("### Limitations")
+    st.markdown("- **Checks are only as good as the reference file.** The profile is learned from the good file, so anything "
+                "it doesn't cover (new valid categories, seasonal ranges) can be flagged wrongly or missed.\n"
+                "- **Groq free tier:** rate-limited per organisation (reported ~30 requests/min, ~12k tokens/min, ~1k requests/day "
+                "for the default model; verify in your Groq console), no uptime guarantee, and models can be retired. "
+                "One request is used per ticket, and any failure falls back to built-in rules.\n"
+                "- **An LLM can be wrong.** Groq only picks from fixes the rule engine can compute exactly, can recommend "
+                "manual review, and nothing is applied until a person clicks. Its wording and choices can differ between runs.\n"
+                "- **Privacy:** with a key set, issue counts and up to 5 sample bad values per problem are sent to Groq, "
+                "never the full file. This demo uses synthetic data only.\n"
+                "- **Demo scope:** mock tickets (nothing is sent to a real ticketing system), one pair of files at a time, "
+                "state kept per browser session.")
     st.markdown("### Try the demo")
     st.markdown("1. **Overview**: see the verdicts. The good file passes, the bad file fails.\n"
                 "2. **Bad data**: see *where* it breaks with charts, then the highlighted cells.\n"
@@ -180,19 +199,41 @@ def build_analysis(issues):
     summary = (f"{len(issues)} problems were found in {issues['column'].nunique()} of {bad.shape[1]} columns "
                "when bad_data.csv was checked against the profile learned from the reference file.")
     if not GROQ_KEY:
-        return {"summary": summary, "analysis": base, "engine": "Rule-based templates", "note": ""}
+        return {"summary": summary, "analysis": base, "engine": "Rule-based templates", "note": "", "choices": {}}
     try:
         res = llm.analyse(llm.summarise(issues, prof, len(bad)), GROQ_KEY, GROQ_MODEL)
     except llm.LLMError as e:
         return {"summary": summary, "analysis": base, "engine": "Rule-based templates",
-                "note": f"Groq analysis unavailable ({e}); showing built-in analysis instead."}
-    lines = []
+                "note": f"Groq analysis unavailable ({e}); showing built-in analysis and rule-based fixes instead.",
+                "choices": {}}
+    lines, choices = [], {}
     for (col, chk), g in issues.groupby(["column", "check"], sort=False):
-        cause, step = res["causes"].get((col, chk), (None, None))
+        c = res["causes"].get((col, chk))
         head = f"**`{col}`**: {len(g)} x {dq.CHECK_LABEL[chk].lower()} ({100 * len(g) / len(bad):.1f}% of rows). "
-        lines.append(head + (f"Likely cause: {cause} Next step: {step}" if cause else
-                             base[len(lines)].split("). ", 1)[-1]))
-    return {"summary": res["summary"], "analysis": lines, "engine": f"Groq ({GROQ_MODEL})", "note": ""}
+        if c:
+            lines.append(head + f"Likely cause: {c['cause']} Next step: {c['step']}")
+            choices[f"{col}|{chk}"] = {"option": c["option"], "rationale": c["rationale"]}
+        else:  # model skipped this one: keep the rule-based text and fix
+            lines.append(head + base[len(lines)].split("). ", 1)[-1])
+    return {"summary": res["summary"], "analysis": lines, "engine": f"Groq ({GROQ_MODEL})", "note": "",
+            "choices": choices}
+
+
+def fixes_for(g, key):
+    """The fix to apply for one problem group: whichever option the engine (Groq or rules) chose.
+    Returns (rows to change with a `new` column, description, who chose it)."""
+    t = st.session_state.ticket or {}
+    ch = t.get("choices", {}).get(key)
+    opt = ch["option"] if ch else "rule"
+    who = f"chosen by {t['engine']}" if ch else "rule-based"
+    why = f" Why: {ch['rationale']}" if ch and ch["rationale"] else ""
+    if opt == "manual":
+        return g.iloc[0:0].assign(new=None), f"Not changed automatically: needs the data owner or the source system.{why}", who
+    vcol, dcol = ("alt_value", "alt_desc") if opt == "generic" else ("fix_value", "fix_desc")
+    f = g.dropna(subset=[vcol])
+    if f.empty:
+        return g.iloc[0:0].assign(new=None), "No safe automatic fix can be inferred; needs a human or the source system.", who
+    return f.assign(new=f[vcol]), g.iloc[0][dcol] + why, who
 
 
 # ---------------------------------------------------------------- overview (verdicts only)
@@ -435,13 +476,14 @@ if page == PAGES[4]:
                     a, b = st.columns([4, 1])
                     a.markdown(f"##### {'✅' if done else '🔴'} `{col}`: {dq.CHECK_LABEL[chk]}  ({len(g)} rows)")
                     a.markdown(f"**What is wrong:** {g.iloc[0]['message']}" + (" (example)" if len(g) > 1 else ""))
-                    a.markdown(f"**Suggested fix:** {g.iloc[0]['fix_desc']}" if g["fix_value"].notna().any()
-                               else "**Suggested fix:** none can be inferred safely; needs a human or the source system.")
-                    prev = g.assign(csv_line=g["row"] + 2, current=g["value"], suggested=g["fix_value"])
+                    fx, fdesc, who = fixes_for(g, key)
+                    a.markdown(f"**Suggested fix ({who}):** {fdesc}")
+                    prev = fx.assign(csv_line=fx["row"] + 2, current=fx["value"], suggested=fx["new"])
                     with a.expander("Show affected rows and before/after"):
-                        st.dataframe(prev[["csv_line", "current", "suggested", "fix_desc"]], hide_index=True,
-                                     width="stretch")
-                    fixable = g["fix_value"].notna().any()
+                        st.dataframe(prev[["csv_line", "current", "suggested"]] if len(fx) else
+                                     g.assign(csv_line=g["row"] + 2, current=g["value"])[["csv_line", "current"]],
+                                     hide_index=True, width="stretch")
+                    fixable = len(fx) > 0
                     if done:
                         b.success("Applied")
                         if b.button("Undo", key=f"undo_{key}"):
@@ -450,16 +492,17 @@ if page == PAGES[4]:
                             st.session_state.applied.pop(key)
                             st.rerun()
                     elif b.button("Apply suggested fix", key=f"fix_{key}", type="primary", disabled=not fixable):
-                        for r in g.dropna(subset=["fix_value"]).itertuples():
-                            work.at[r.row, r.column] = r.fix_value
+                        for r in fx.itertuples():
+                            work.at[r.row, r.column] = r.new
                         st.session_state.applied[key] = len(g)
                         st.rerun()
             c1, c2, c3 = st.columns(3)
             if c1.button("Apply ALL suggested fixes"):
-                for r in bad_issues.dropna(subset=["fix_value"]).itertuples():
-                    work.at[r.row, r.column] = r.fix_value
                 for (col, chk), g in groups:
-                    if g["fix_value"].notna().any():
+                    fx, _, _ = fixes_for(g, f"{col}|{chk}")
+                    for r in fx.itertuples():
+                        work.at[r.row, r.column] = r.new
+                    if len(fx):
                         st.session_state.applied[f"{col}|{chk}"] = len(g)
                 st.rerun()
             if c2.button("Reset working copy"):
