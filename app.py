@@ -2,12 +2,13 @@
 The AI never edits data: it flags issues and drafts a ticket. A person clicks to apply a suggestion,
 and even then only an in-session copy changes; the CSV files on disk are never touched."""
 import datetime as dt
-import time
+import os
 import pathlib
 import altair as alt
 import pandas as pd
 import streamlit as st
 import dq_checks as dq
+import llm
 
 st.set_page_config(page_title="Data Quality Triage", page_icon="🔎", layout="wide")
 DATA = pathlib.Path(__file__).parent / "data"
@@ -22,6 +23,26 @@ with st.sidebar:
     st.caption("Leave empty to use the bundled sample files in /data.")
     st.divider()
     st.caption("Read-only analysis: the AI flags problems but never changes your data.")
+    st.divider()
+    st.subheader("AI engine (optional)")
+
+
+    def _secret(name):
+        try:
+            return st.secrets.get(name)
+        except Exception:  # no secrets.toml
+            return None
+
+
+    typed_key = st.text_input("Groq API key", type="password", placeholder="gsk_...",
+                              help="Held in this browser session only. On Streamlit Cloud, set GROQ_API_KEY in Secrets instead.")
+    GROQ_KEY = typed_key.strip() or _secret("GROQ_API_KEY") or os.environ.get("GROQ_API_KEY") or ""
+    GROQ_MODEL = st.text_input("Model", value=_secret("GROQ_MODEL") or os.environ.get("GROQ_MODEL") or llm.DEFAULT_MODEL)
+    if GROQ_KEY:
+        st.success("Groq key set: an LLM will write the ticket analysis.")
+        st.caption("Sent to Groq: issue counts and up to 5 sample bad values per problem. Never the full file.")
+    else:
+        st.info("No key: ticket analysis uses built-in rule-based text.")
 
 good = dq.load(up_good or DATA / "good_data.csv")
 bad = dq.load(up_bad or DATA / "bad_data.csv")
@@ -114,6 +135,9 @@ if page == PAGES[0]:
         st.markdown("- Changes your data on its own\n- Edits the files on disk\n- Pushes a failing file to the next stage\n"
                     "- Applies a fix without a person clicking it")
 
+    st.info("**How the AI part works.** Detecting problems and computing the suggested fix values is rule-based and "
+            "deterministic, so every number can be checked. If a Groq API key is added in the sidebar, an LLM also "
+            "writes the root-cause analysis and ticket summary. Without a key, built-in text is used.")
     st.markdown("### How it works, in 4 steps")
     s1, s2, s3, s4 = st.columns(4)
     for col, n, title, body in ((s1, "1", "Learn", "Reads the good file and learns each column's type, range and allowed values."),
@@ -149,6 +173,27 @@ if page == PAGES[0]:
                 "3. Still in **Bad data**, type a data owner's name and let the AI raise a ticket.\n"
                 "4. **Support ticket**: click the ticket ID, read the AI analysis, and click **Apply suggested fix**.")
     st.button("Start the demo →", on_click=go, args=(PAGES[1],), type="primary")
+
+def build_analysis(issues):
+    """Returns summary + bullet lines + which engine wrote them. LLM text if a key is set, else templates."""
+    base = analyse_issues(issues)
+    summary = (f"{len(issues)} problems were found in {issues['column'].nunique()} of {bad.shape[1]} columns "
+               "when bad_data.csv was checked against the profile learned from the reference file.")
+    if not GROQ_KEY:
+        return {"summary": summary, "analysis": base, "engine": "Rule-based templates", "note": ""}
+    try:
+        res = llm.analyse(llm.summarise(issues, prof, len(bad)), GROQ_KEY, GROQ_MODEL)
+    except llm.LLMError as e:
+        return {"summary": summary, "analysis": base, "engine": "Rule-based templates",
+                "note": f"Groq analysis unavailable ({e}); showing built-in analysis instead."}
+    lines = []
+    for (col, chk), g in issues.groupby(["column", "check"], sort=False):
+        cause, step = res["causes"].get((col, chk), (None, None))
+        head = f"**`{col}`**: {len(g)} x {dq.CHECK_LABEL[chk].lower()} ({100 * len(g) / len(bad):.1f}% of rows). "
+        lines.append(head + (f"Likely cause: {cause} Next step: {step}" if cause else
+                             base[len(lines)].split("). ", 1)[-1]))
+    return {"summary": res["summary"], "analysis": lines, "engine": f"Groq ({GROQ_MODEL})", "note": ""}
+
 
 # ---------------------------------------------------------------- overview (verdicts only)
 OV_CSS = """<style>
@@ -259,9 +304,8 @@ if page == PAGES[3]:
                                   placeholder="e.g. Priya Sharma")
             if st.button("Yes, analyse and raise a ticket", type="primary", disabled=not owner.strip()):
                 with st.spinner("Analysing issues and drafting the ticket..."):
-                    time.sleep(1.5)
                     st.session_state.ticket = {"id": f"DQ-{dt.datetime.now():%Y%m%d-%H%M}", "opened": dt.datetime.now(),
-                                               "owner": owner.strip(), "analysis": analyse_issues(bad_issues)}
+                                               "owner": owner.strip(), **build_analysis(bad_issues)}
                 st.session_state.ticket_open = False
                 go(PAGES[4])
                 st.rerun()
@@ -375,11 +419,12 @@ if page == PAGES[4]:
                 g2[2].caption("ISSUES FOUND"); g2[2].markdown(f"**{len(bad_issues)}** in {bad_issues['column'].nunique()} columns")
                 g2[3].caption("REMAINING"); g2[3].markdown(f"**{len(live)}**")
             st.markdown("#### Description")
-            st.write(f"The AI Agent checked bad_data.csv against the profile learned from the reference file and found "
-                     f"{len(bad_issues)} problems in {bad_issues['column'].nunique()} of {bad.shape[1]} columns. "
-                     f"The file has been blocked from the next data process. The agent has **not** modified any data: "
-                     f"review each finding below and click **Apply suggested fix** to change the working copy yourself.")
-            with st.expander("🤖 AI analysis: likely causes", expanded=True):
+            st.write(t["summary"] + " The file has been blocked from the next data process. The agent has **not** "
+                     "modified any data: review each finding below and click **Apply suggested fix** to change the "
+                     "working copy yourself.")
+            if t.get("note"):
+                st.warning(t["note"])
+            with st.expander(f"🤖 AI analysis: likely causes  ·  written by {t['engine']}", expanded=True):
                 for line in t["analysis"]:
                     st.markdown("- " + line)
             st.markdown("#### Findings and suggested fixes")
