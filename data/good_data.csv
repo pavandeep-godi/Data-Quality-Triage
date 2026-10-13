@@ -1,0 +1,501 @@
+order_id,customer_id,customer_name,email,country,city,product_category,product_name,quantity,unit_price,discount_pct,total_amount,order_date,ship_date,status,payment_method,rating,is_member,shipping_cost,delivery_days
+100001,1039,Mia Garcia,mia.garcia1039@example.com,USA,Austin,Electronics,Keyboard,9,133.87,20,963.86,2025-10-11,2025-10-12,Returned,Bank Transfer,4,True,0.0,3
+100002,1006,Sofia Khan,sofia.khan1006@example.com,Germany,Berlin,Fitness,Skipping Rope,8,164.63,0,1317.04,2025-09-03,2025-09-07,Delivered,Card,4,True,0.0,2
+100003,1125,Ava Taylor,ava.taylor1125@example.com,Germany,Berlin,Books,Cookbook,6,125.03,25,562.64,2025-12-06,2025-12-08,Delivered,PayPal,2,True,0.0,4
+100004,1136,Zoe Lee,zoe.lee1136@example.com,India,Pune,Books,Cookbook,9,242.53,0,2182.77,2025-12-17,2025-12-19,Delivered,PayPal,2,True,0.0,5
+100005,1154,Omar Smith,omar.smith1154@example.com,India,Delhi,Home,Blender,2,343.21,0,686.42,2025-09-15,2025-09-16,Delivered,Bank Transfer,5,True,0.0,2
+100006,1190,Kai Brown,kai.brown1190@example.com,Canada,Montreal,Home,Lamp,10,117.99,0,1179.9,2025-05-16,2025-05-21,Processing,UPI,5,True,0.0,6
+100007,1099,Mia Müller,mia.muller1099@example.com,USA,New York,Fitness,Yoga Mat,9,168.71,15,1290.63,2025-08-07,2025-08-12,Delivered,Card,3,True,0.0,5
+100008,1165,Priya Khan,priya.khan1165@example.com,Germany,Berlin,Electronics,Webcam,6,465.54,20,2234.59,2025-06-05,2025-06-10,Delivered,Bank Transfer,2,False,0.0,2
+100009,1143,Noah Müller,noah.muller1143@example.com,UK,Leeds,Home,Lamp,8,29.04,10,209.09,2025-08-18,2025-08-19,Delivered,PayPal,2,True,0.0,7
+100010,1055,Liam Taylor,liam.taylor1055@example.com,USA,Austin,Electronics,Headphones,6,233.08,0,1398.48,2025-10-24,2025-10-26,Delivered,UPI,3,False,0.0,1
+100011,1169,Ethan Müller,ethan.muller1169@example.com,India,Delhi,Books,Cookbook,3,357.22,5,1018.08,2025-05-15,2025-05-20,Delivered,UPI,3,False,0.0,5
+100012,1010,Sofia Khan,sofia.khan1010@example.com,Canada,Montreal,Fitness,Skipping Rope,8,79.47,25,476.82,2025-07-04,2025-07-07,Shipped,UPI,1,True,0.0,4
+100013,1119,Lena Patel,lena.patel1119@example.com,Germany,Hamburg,Books,Cookbook,3,28.45,30,59.74,2025-01-17,2025-01-18,Delivered,UPI,1,False,11.02,5
+100014,1188,Zoe Taylor,zoe.taylor1188@example.com,Germany,Hamburg,Books,Cookbook,4,73.41,25,220.23,2025-09-26,2025-09-27,Delivered,UPI,3,True,0.0,6
+100015,1131,Mia Taylor,mia.taylor1131@example.com,Germany,Munich,Books,Cookbook,6,459.82,0,2758.92,2025-06-28,2025-06-30,Delivered,UPI,4,False,0.0,5
+100016,1187,Liam Lee,liam.lee1187@example.com,Germany,Hamburg,Electronics,Headphones,9,9.58,25,64.66,2025-06-17,2025-06-22,Delivered,UPI,1,True,6.4,5
+100017,1011,Mia Brown,mia.brown1011@example.com,India,Delhi,Books,Novel,4,98.22,20,314.3,2025-07-14,2025-07-15,Delivered,Card,3,False,0.0,6
+100018,1106,Liam Smith,liam.smith1106@example.com,USA,Austin,Electronics,Headphones,5,20.49,15,87.08,2025-03-20,2025-03-25,Shipped,Bank Transfer,1,False,6.39,5
+100019,1156,Noah Lee,noah.lee1156@example.com,Canada,Vancouver,Home,Kettle,1,59.76,5,56.77,2025-08-07,2025-08-11,Returned,Card,2,False,10.11,6
+100020,1128,Lena Singh,lena.singh1128@example.com,India,Delhi,Fitness,Skipping Rope,2,311.97,30,436.76,2025-09-29,2025-10-04,Delivered,Card,4,True,0.0,3
+100021,1176,Liam Taylor,liam.taylor1176@example.com,India,Delhi,Home,Lamp,1,124.61,15,105.92,2025-05-08,2025-05-13,Returned,Card,2,False,0.0,2
+100022,1092,Ava Garcia,ava.garcia1092@example.com,UK,Leeds,Electronics,Headphones,1,286.76,0,286.76,2025-02-17,2025-02-19,Delivered,Bank Transfer,2,False,0.0,2
+100023,1136,Arjun Khan,arjun.khan1136@example.com,USA,Austin,Electronics,Headphones,9,297.15,5,2540.63,2025-05-22,2025-05-27,Shipped,UPI,5,False,0.0,5
+100024,1083,Mia Taylor,mia.taylor1083@example.com,Canada,Montreal,Books,Atlas,9,425.47,10,3446.31,2025-03-14,2025-03-15,Shipped,UPI,1,False,0.0,4
+100025,1174,Zoe Wong,zoe.wong1174@example.com,Germany,Munich,Home,Blender,9,7.35,0,66.15,2025-05-17,2025-05-19,Shipped,UPI,1,True,9.87,1
+100026,1023,Liam Singh,liam.singh1023@example.com,Germany,Berlin,Home,Kettle,1,427.42,10,384.68,2025-08-17,2025-08-19,Processing,Card,5,True,0.0,2
+100027,1050,Noah Smith,noah.smith1050@example.com,India,Delhi,Books,Cookbook,1,311.46,15,264.74,2025-02-11,2025-02-12,Delivered,UPI,3,False,0.0,7
+100028,1019,Zoe Smith,zoe.smith1019@example.com,Canada,Toronto,Electronics,Webcam,3,85.56,30,179.68,2025-09-30,2025-10-01,Delivered,Card,1,False,0.0,6
+100029,1140,Lena Singh,lena.singh1140@example.com,India,Mumbai,Books,Cookbook,6,387.6,0,2325.6,2025-03-23,2025-03-24,Delivered,Bank Transfer,3,False,0.0,6
+100030,1046,Ethan Khan,ethan.khan1046@example.com,India,Mumbai,Books,Novel,4,428.47,20,1371.1,2025-11-23,2025-11-24,Delivered,Card,3,False,0.0,2
+100031,1063,Arjun Smith,arjun.smith1063@example.com,India,Delhi,Fitness,Skipping Rope,5,130.86,30,458.01,2025-09-25,2025-09-27,Shipped,UPI,2,False,0.0,1
+100032,1167,Arjun Patel,arjun.patel1167@example.com,UK,Bristol,Electronics,Webcam,2,459.8,25,689.7,2025-04-10,2025-04-11,Delivered,Bank Transfer,3,False,0.0,3
+100033,1072,Mia Lee,mia.lee1072@example.com,USA,Chicago,Electronics,Webcam,8,229.96,30,1287.78,2025-07-25,2025-07-26,Delivered,Bank Transfer,4,True,0.0,6
+100034,1029,Mia Lee,mia.lee1029@example.com,India,Delhi,Home,Kettle,4,303.7,5,1154.06,2025-02-10,2025-02-15,Delivered,PayPal,2,True,0.0,4
+100035,1004,Zoe Smith,zoe.smith1004@example.com,Canada,Toronto,Fitness,Yoga Mat,1,492.4,25,369.3,2025-02-06,2025-02-07,Delivered,Card,5,True,0.0,6
+100036,1045,Ava Khan,ava.khan1045@example.com,USA,Austin,Electronics,Headphones,8,183.96,30,1030.18,2025-12-15,2025-12-16,Shipped,UPI,3,False,0.0,4
+100037,1182,Lena Smith,lena.smith1182@example.com,Canada,Toronto,Home,Blender,10,407.51,10,3667.59,2025-10-20,2025-10-21,Shipped,Card,5,False,0.0,4
+100038,1109,Priya Lee,priya.lee1109@example.com,Canada,Montreal,Electronics,Headphones,1,162.61,15,138.22,2025-02-26,2025-02-27,Delivered,PayPal,1,False,0.0,5
+100039,1198,Mia Wong,mia.wong1198@example.com,UK,Bristol,Fitness,Dumbbells,5,400.61,15,1702.59,2025-04-14,2025-04-17,Delivered,UPI,2,True,0.0,7
+100040,1043,Ethan Wong,ethan.wong1043@example.com,Germany,Hamburg,Electronics,Headphones,9,302.36,15,2313.05,2025-03-14,2025-03-19,Delivered,PayPal,4,False,0.0,4
+100041,1070,Mia Khan,mia.khan1070@example.com,USA,New York,Fitness,Dumbbells,8,112.1,10,807.12,2025-05-25,2025-05-29,Delivered,PayPal,5,False,0.0,5
+100042,1032,Priya Garcia,priya.garcia1032@example.com,Germany,Berlin,Electronics,Keyboard,9,209.94,30,1322.62,2025-04-17,2025-04-20,Shipped,Bank Transfer,2,False,0.0,7
+100043,1079,Omar Taylor,omar.taylor1079@example.com,Germany,Berlin,Electronics,Keyboard,5,162.23,30,567.8,2025-04-30,2025-05-01,Delivered,UPI,5,True,0.0,3
+100044,1112,Liam Garcia,liam.garcia1112@example.com,UK,Bristol,Electronics,Webcam,4,43.66,10,157.18,2025-07-13,2025-07-17,Delivered,Bank Transfer,1,True,0.0,6
+100045,1161,Ethan Singh,ethan.singh1161@example.com,USA,New York,Books,Cookbook,8,19.77,25,118.62,2025-03-11,2025-03-12,Delivered,UPI,3,True,0.0,4
+100046,1073,Ava Lee,ava.lee1073@example.com,Canada,Montreal,Electronics,Keyboard,2,176.51,10,317.72,2025-11-19,2025-11-23,Returned,PayPal,2,False,0.0,7
+100047,1154,Zoe Khan,zoe.khan1154@example.com,India,Mumbai,Home,Lamp,3,14.42,25,32.44,2025-09-23,2025-09-26,Shipped,PayPal,3,False,11.84,4
+100048,1125,Noah Wong,noah.wong1125@example.com,Canada,Toronto,Fitness,Dumbbells,7,86.92,20,486.75,2025-10-05,2025-10-10,Delivered,Bank Transfer,5,False,0.0,5
+100049,1058,Ethan Khan,ethan.khan1058@example.com,Germany,Berlin,Fitness,Yoga Mat,7,363.97,15,2165.62,2025-03-03,2025-03-05,Delivered,UPI,4,True,0.0,3
+100050,1182,Zoe Wong,zoe.wong1182@example.com,Germany,Hamburg,Fitness,Yoga Mat,2,355.51,0,711.02,2025-09-16,2025-09-20,Delivered,Bank Transfer,4,True,0.0,5
+100051,1086,Mia Smith,mia.smith1086@example.com,Germany,Munich,Books,Cookbook,6,370.6,20,1778.88,2025-11-02,2025-11-05,Processing,UPI,2,False,0.0,3
+100052,1030,Ethan Smith,ethan.smith1030@example.com,USA,Chicago,Home,Lamp,4,161.99,10,583.16,2025-03-05,2025-03-08,Delivered,UPI,5,True,0.0,5
+100053,1192,Omar Smith,omar.smith1192@example.com,UK,Leeds,Books,Cookbook,6,445.56,5,2539.69,2025-10-02,2025-10-07,Delivered,UPI,3,False,0.0,6
+100054,1182,Omar Khan,omar.khan1182@example.com,India,Delhi,Home,Lamp,10,298.95,5,2840.02,2025-05-11,2025-05-15,Returned,PayPal,4,True,0.0,4
+100055,1009,Ava Lee,ava.lee1009@example.com,India,Delhi,Books,Atlas,1,67.38,30,47.17,2025-10-15,2025-10-18,Shipped,PayPal,4,False,6.0,4
+100056,1180,Ethan Müller,ethan.muller1180@example.com,USA,Chicago,Fitness,Skipping Rope,10,76.14,0,761.4,2025-06-24,2025-06-27,Delivered,Card,4,False,0.0,3
+100057,1189,Sofia Patel,sofia.patel1189@example.com,India,Mumbai,Fitness,Yoga Mat,5,348.08,25,1305.3,2025-10-20,2025-10-24,Delivered,Bank Transfer,4,False,0.0,6
+100058,1165,Arjun Wong,arjun.wong1165@example.com,USA,New York,Books,Cookbook,8,90.61,30,507.42,2025-02-23,2025-02-25,Delivered,Bank Transfer,3,True,0.0,5
+100059,1050,Noah Lee,noah.lee1050@example.com,Germany,Munich,Books,Cookbook,5,256.11,0,1280.55,2025-05-23,2025-05-24,Delivered,Card,4,False,0.0,4
+100060,1126,Priya Garcia,priya.garcia1126@example.com,Germany,Berlin,Books,Cookbook,4,495.93,20,1586.98,2025-04-10,2025-04-13,Delivered,Bank Transfer,5,False,0.0,1
+100061,1107,Liam Singh,liam.singh1107@example.com,Canada,Vancouver,Fitness,Dumbbells,8,6.98,20,44.67,2025-04-01,2025-04-02,Processing,PayPal,2,False,11.92,1
+100062,1124,Ava Singh,ava.singh1124@example.com,Germany,Berlin,Electronics,Webcam,7,13.21,10,83.22,2025-04-23,2025-04-24,Processing,Card,3,True,5.94,1
+100063,1123,Priya Smith,priya.smith1123@example.com,UK,Bristol,Home,Blender,2,496.58,20,794.53,2025-05-20,2025-05-23,Delivered,UPI,1,False,0.0,6
+100064,1127,Arjun Patel,arjun.patel1127@example.com,Canada,Toronto,Electronics,Headphones,8,294.4,10,2119.68,2025-02-16,2025-02-20,Shipped,Bank Transfer,2,True,0.0,6
+100065,1102,Omar Wong,omar.wong1102@example.com,India,Mumbai,Books,Cookbook,8,67.82,15,461.18,2025-09-16,2025-09-20,Delivered,UPI,4,True,0.0,1
+100066,1138,Ethan Brown,ethan.brown1138@example.com,UK,Leeds,Electronics,Headphones,4,449.16,15,1527.14,2025-07-20,2025-07-22,Delivered,Bank Transfer,4,False,0.0,1
+100067,1105,Sofia Lee,sofia.lee1105@example.com,Canada,Toronto,Electronics,Keyboard,10,440.79,25,3305.92,2025-10-30,2025-11-02,Shipped,UPI,2,False,0.0,6
+100068,1003,Zoe Lee,zoe.lee1003@example.com,UK,Leeds,Electronics,Headphones,7,270.42,20,1514.35,2025-09-15,2025-09-16,Delivered,Card,3,True,0.0,4
+100069,1007,Lena Brown,lena.brown1007@example.com,USA,New York,Fitness,Yoga Mat,4,312.79,10,1126.04,2025-02-24,2025-02-28,Delivered,UPI,5,True,0.0,3
+100070,1191,Liam Müller,liam.muller1191@example.com,India,Mumbai,Fitness,Skipping Rope,1,140.23,30,98.16,2025-01-26,2025-01-28,Delivered,PayPal,1,False,8.61,5
+100071,1181,Liam Garcia,liam.garcia1181@example.com,Germany,Hamburg,Books,Novel,7,30.01,25,157.55,2025-06-04,2025-06-08,Delivered,PayPal,1,False,0.0,2
+100072,1117,Omar Smith,omar.smith1117@example.com,USA,Austin,Home,Kettle,3,299.31,30,628.55,2025-06-25,2025-06-30,Delivered,Bank Transfer,2,True,0.0,2
+100073,1034,Sofia Singh,sofia.singh1034@example.com,India,Mumbai,Home,Kettle,8,150.9,25,905.4,2025-03-29,2025-04-02,Shipped,Card,4,False,0.0,3
+100074,1156,Kai Wong,kai.wong1156@example.com,USA,Austin,Electronics,Keyboard,6,333.49,10,1800.85,2025-10-13,2025-10-15,Processing,Bank Transfer,2,False,0.0,7
+100075,1028,Mia Lee,mia.lee1028@example.com,Germany,Hamburg,Electronics,Webcam,5,418.94,25,1571.02,2025-08-01,2025-08-06,Shipped,PayPal,5,False,0.0,6
+100076,1075,Ava Lee,ava.lee1075@example.com,India,Delhi,Home,Lamp,2,13.99,10,25.18,2025-10-01,2025-10-05,Processing,Card,5,True,5.53,2
+100077,1065,Kai Smith,kai.smith1065@example.com,UK,Leeds,Books,Novel,8,299.88,5,2279.09,2025-02-09,2025-02-13,Delivered,Bank Transfer,3,False,0.0,4
+100078,1002,Priya Patel,priya.patel1002@example.com,UK,Bristol,Fitness,Yoga Mat,2,119.48,15,203.12,2025-10-25,2025-10-30,Processing,UPI,2,False,0.0,7
+100079,1161,Noah Müller,noah.muller1161@example.com,India,Delhi,Books,Cookbook,5,437.57,30,1531.5,2025-03-17,2025-03-22,Delivered,PayPal,1,False,0.0,7
+100080,1101,Omar Müller,omar.muller1101@example.com,Germany,Munich,Electronics,Keyboard,9,130.56,15,998.78,2025-06-13,2025-06-14,Delivered,PayPal,5,False,0.0,6
+100081,1063,Sofia Patel,sofia.patel1063@example.com,Canada,Vancouver,Electronics,Webcam,10,307.33,10,2765.97,2025-06-10,2025-06-15,Processing,Card,5,True,0.0,1
+100082,1101,Mia Taylor,mia.taylor1101@example.com,India,Pune,Books,Cookbook,10,279.0,15,2371.5,2025-10-27,2025-10-31,Delivered,Card,3,True,0.0,2
+100083,1000,Omar Patel,omar.patel1000@example.com,USA,Austin,Electronics,Headphones,10,201.1,10,1809.9,2025-04-12,2025-04-14,Delivered,PayPal,3,True,0.0,2
+100084,1087,Omar Lee,omar.lee1087@example.com,Canada,Toronto,Electronics,Webcam,6,340.42,20,1634.02,2025-03-29,2025-03-31,Delivered,UPI,4,True,0.0,2
+100085,1103,Arjun Khan,arjun.khan1103@example.com,Germany,Munich,Home,Kettle,3,364.26,10,983.5,2025-05-04,2025-05-08,Delivered,Card,4,True,0.0,2
+100086,1067,Priya Garcia,priya.garcia1067@example.com,Germany,Hamburg,Books,Atlas,9,285.63,15,2185.07,2025-05-12,2025-05-14,Delivered,Card,1,True,0.0,3
+100087,1166,Mia Müller,mia.muller1166@example.com,USA,New York,Fitness,Dumbbells,9,380.42,10,3081.4,2025-03-08,2025-03-11,Delivered,Bank Transfer,4,False,0.0,4
+100088,1049,Kai Brown,kai.brown1049@example.com,UK,Bristol,Electronics,Keyboard,10,491.79,10,4426.11,2025-03-06,2025-03-10,Processing,Card,5,False,0.0,3
+100089,1027,Kai Garcia,kai.garcia1027@example.com,Germany,Hamburg,Books,Cookbook,7,212.54,30,1041.45,2025-03-26,2025-03-30,Delivered,Card,4,False,0.0,3
+100090,1105,Kai Müller,kai.muller1105@example.com,Canada,Montreal,Books,Atlas,2,259.72,10,467.5,2025-06-20,2025-06-25,Delivered,PayPal,3,False,0.0,2
+100091,1177,Lena Garcia,lena.garcia1177@example.com,India,Mumbai,Books,Novel,6,11.17,0,67.02,2025-05-06,2025-05-07,Delivered,Card,3,True,5.88,2
+100092,1075,Ava Smith,ava.smith1075@example.com,Canada,Vancouver,Books,Atlas,5,399.03,10,1795.64,2025-05-24,2025-05-26,Processing,PayPal,2,True,0.0,7
+100093,1009,Ethan Smith,ethan.smith1009@example.com,Canada,Vancouver,Electronics,Headphones,9,262.51,15,2008.2,2025-09-20,2025-09-25,Delivered,PayPal,4,True,0.0,5
+100094,1193,Zoe Lee,zoe.lee1193@example.com,UK,Leeds,Books,Cookbook,4,206.94,0,827.76,2025-03-29,2025-04-01,Delivered,PayPal,2,True,0.0,2
+100095,1088,Kai Garcia,kai.garcia1088@example.com,Canada,Montreal,Home,Lamp,4,51.57,10,185.65,2025-11-29,2025-12-01,Delivered,UPI,2,True,0.0,6
+100096,1034,Arjun Smith,arjun.smith1034@example.com,UK,Leeds,Books,Cookbook,1,445.38,5,423.11,2025-10-02,2025-10-04,Shipped,Bank Transfer,2,False,0.0,6
+100097,1123,Arjun Wong,arjun.wong1123@example.com,UK,Leeds,Fitness,Skipping Rope,9,200.53,15,1534.05,2025-03-05,2025-03-07,Shipped,PayPal,2,False,0.0,7
+100098,1063,Liam Smith,liam.smith1063@example.com,Germany,Hamburg,Books,Atlas,8,342.88,25,2057.28,2025-04-25,2025-04-28,Delivered,UPI,2,False,0.0,2
+100099,1187,Omar Taylor,omar.taylor1187@example.com,Germany,Hamburg,Fitness,Skipping Rope,1,78.94,30,55.26,2025-03-08,2025-03-10,Shipped,Card,1,True,6.65,5
+100100,1058,Ethan Lee,ethan.lee1058@example.com,USA,Austin,Fitness,Yoga Mat,5,480.97,10,2164.37,2025-04-10,2025-04-14,Delivered,UPI,4,False,0.0,7
+100101,1110,Liam Taylor,liam.taylor1110@example.com,Canada,Vancouver,Fitness,Yoga Mat,5,93.33,30,326.65,2025-05-14,2025-05-17,Delivered,Card,3,False,0.0,6
+100102,1108,Kai Taylor,kai.taylor1108@example.com,USA,Austin,Books,Atlas,5,103.77,5,492.91,2025-02-17,2025-02-21,Delivered,Card,5,True,0.0,2
+100103,1048,Noah Brown,noah.brown1048@example.com,Canada,Toronto,Fitness,Dumbbells,10,430.2,25,3226.5,2025-01-06,2025-01-07,Delivered,UPI,1,True,0.0,7
+100104,1099,Ava Lee,ava.lee1099@example.com,USA,Chicago,Electronics,Headphones,2,456.73,15,776.44,2025-06-10,2025-06-14,Delivered,Card,4,False,0.0,3
+100105,1021,Ava Müller,ava.muller1021@example.com,Germany,Munich,Books,Atlas,4,110.01,25,330.03,2025-09-13,2025-09-18,Delivered,Card,1,True,0.0,4
+100106,1128,Zoe Singh,zoe.singh1128@example.com,Germany,Berlin,Fitness,Dumbbells,2,237.55,25,356.33,2025-04-21,2025-04-22,Delivered,UPI,3,False,0.0,4
+100107,1151,Liam Müller,liam.muller1151@example.com,Germany,Munich,Home,Lamp,3,368.08,15,938.6,2025-11-11,2025-11-13,Delivered,PayPal,3,True,0.0,6
+100108,1190,Sofia Singh,sofia.singh1190@example.com,Germany,Munich,Fitness,Skipping Rope,10,439.79,5,4178.0,2025-05-15,2025-05-19,Delivered,Card,3,True,0.0,1
+100109,1065,Arjun Wong,arjun.wong1065@example.com,India,Delhi,Books,Cookbook,10,192.63,15,1637.36,2025-11-25,2025-11-29,Shipped,UPI,4,False,0.0,4
+100110,1057,Mia Singh,mia.singh1057@example.com,Germany,Berlin,Books,Cookbook,1,260.92,25,195.69,2025-03-28,2025-04-01,Shipped,Card,5,True,0.0,6
+100111,1109,Ava Smith,ava.smith1109@example.com,UK,London,Books,Atlas,7,372.15,30,1823.53,2025-07-16,2025-07-19,Delivered,Card,2,True,0.0,4
+100112,1138,Zoe Brown,zoe.brown1138@example.com,Germany,Berlin,Home,Blender,3,366.91,30,770.51,2025-10-06,2025-10-10,Delivered,Card,5,True,0.0,2
+100113,1198,Liam Lee,liam.lee1198@example.com,India,Delhi,Books,Cookbook,2,392.57,5,745.88,2025-01-22,2025-01-26,Delivered,UPI,1,True,0.0,1
+100114,1005,Kai Khan,kai.khan1005@example.com,India,Mumbai,Home,Blender,3,287.12,20,689.09,2025-12-06,2025-12-07,Delivered,PayPal,2,False,0.0,4
+100115,1047,Mia Khan,mia.khan1047@example.com,India,Delhi,Fitness,Yoga Mat,2,56.78,0,113.56,2025-05-14,2025-05-18,Delivered,Bank Transfer,2,True,0.0,5
+100116,1052,Zoe Singh,zoe.singh1052@example.com,India,Pune,Fitness,Yoga Mat,5,452.47,20,1809.88,2025-07-01,2025-07-04,Delivered,PayPal,5,True,0.0,4
+100117,1051,Ava Müller,ava.muller1051@example.com,USA,Austin,Electronics,Webcam,10,433.46,30,3034.22,2025-08-18,2025-08-19,Shipped,PayPal,1,False,0.0,7
+100118,1092,Liam Khan,liam.khan1092@example.com,USA,New York,Home,Lamp,6,400.06,0,2400.36,2025-08-23,2025-08-26,Shipped,Bank Transfer,2,False,0.0,5
+100119,1174,Noah Garcia,noah.garcia1174@example.com,UK,Bristol,Electronics,Keyboard,8,54.43,20,348.35,2025-01-09,2025-01-12,Delivered,UPI,3,True,0.0,4
+100120,1006,Ava Wong,ava.wong1006@example.com,USA,New York,Electronics,Headphones,5,106.18,30,371.63,2025-11-13,2025-11-14,Delivered,Bank Transfer,5,False,0.0,1
+100121,1163,Lena Garcia,lena.garcia1163@example.com,India,Mumbai,Home,Lamp,1,373.08,25,279.81,2025-08-16,2025-08-21,Processing,Bank Transfer,3,True,0.0,4
+100122,1123,Kai Taylor,kai.taylor1123@example.com,Germany,Berlin,Home,Blender,1,16.45,10,14.8,2025-12-31,2026-01-02,Delivered,PayPal,5,False,11.51,2
+100123,1123,Kai Wong,kai.wong1123@example.com,Germany,Berlin,Electronics,Webcam,3,489.72,0,1469.16,2025-06-22,2025-06-24,Processing,Bank Transfer,4,False,0.0,6
+100124,1135,Mia Smith,mia.smith1135@example.com,India,Pune,Home,Blender,3,191.69,30,402.55,2025-08-12,2025-08-15,Delivered,Card,4,False,0.0,2
+100125,1023,Omar Brown,omar.brown1023@example.com,Canada,Toronto,Fitness,Yoga Mat,9,361.06,30,2274.68,2025-06-10,2025-06-15,Delivered,Bank Transfer,4,True,0.0,7
+100126,1149,Arjun Brown,arjun.brown1149@example.com,India,Pune,Electronics,Headphones,9,444.35,20,3199.32,2025-11-21,2025-11-25,Delivered,PayPal,1,True,0.0,3
+100127,1049,Ava Smith,ava.smith1049@example.com,USA,Chicago,Home,Lamp,9,200.34,30,1262.14,2025-10-31,2025-11-04,Delivered,Card,3,False,0.0,4
+100128,1103,Liam Patel,liam.patel1103@example.com,Germany,Berlin,Home,Kettle,7,162.97,0,1140.79,2025-11-28,2025-11-30,Processing,Card,3,False,0.0,2
+100129,1135,Arjun Lee,arjun.lee1135@example.com,India,Delhi,Fitness,Yoga Mat,6,306.33,20,1470.38,2025-07-04,2025-07-09,Delivered,PayPal,2,True,0.0,2
+100130,1120,Zoe Brown,zoe.brown1120@example.com,Germany,Berlin,Home,Blender,7,292.59,0,2048.13,2025-10-16,2025-10-21,Returned,UPI,1,True,0.0,7
+100131,1064,Ava Patel,ava.patel1064@example.com,India,Delhi,Fitness,Yoga Mat,5,207.52,30,726.32,2025-05-11,2025-05-14,Delivered,UPI,1,True,0.0,2
+100132,1079,Kai Müller,kai.muller1079@example.com,India,Delhi,Home,Blender,7,302.88,20,1696.13,2025-06-18,2025-06-21,Processing,UPI,4,False,0.0,4
+100133,1095,Lena Müller,lena.muller1095@example.com,USA,Chicago,Home,Kettle,8,468.01,30,2620.86,2025-10-05,2025-10-06,Processing,Bank Transfer,4,True,0.0,7
+100134,1008,Arjun Patel,arjun.patel1008@example.com,India,Mumbai,Home,Blender,8,236.48,15,1608.06,2025-01-30,2025-02-03,Delivered,UPI,2,False,0.0,5
+100135,1145,Kai Patel,kai.patel1145@example.com,Germany,Hamburg,Electronics,Keyboard,7,102.39,0,716.73,2025-09-17,2025-09-22,Delivered,Card,4,False,0.0,1
+100136,1019,Kai Lee,kai.lee1019@example.com,UK,Leeds,Fitness,Yoga Mat,1,191.72,0,191.72,2025-01-06,2025-01-09,Shipped,UPI,4,False,0.0,3
+100137,1091,Kai Wong,kai.wong1091@example.com,Germany,Berlin,Electronics,Headphones,8,200.08,10,1440.58,2025-07-31,2025-08-03,Delivered,Card,5,True,0.0,3
+100138,1130,Mia Singh,mia.singh1130@example.com,USA,Chicago,Home,Kettle,4,69.9,25,209.7,2025-06-24,2025-06-27,Processing,PayPal,5,False,0.0,2
+100139,1016,Sofia Garcia,sofia.garcia1016@example.com,UK,London,Books,Novel,8,85.62,5,650.71,2025-06-21,2025-06-22,Delivered,Bank Transfer,5,False,0.0,2
+100140,1199,Arjun Taylor,arjun.taylor1199@example.com,India,Pune,Books,Cookbook,6,343.86,25,1547.37,2025-06-30,2025-07-04,Delivered,Bank Transfer,1,True,0.0,4
+100141,1075,Lena Wong,lena.wong1075@example.com,Canada,Montreal,Fitness,Yoga Mat,9,173.04,5,1479.49,2025-06-29,2025-07-03,Delivered,PayPal,4,False,0.0,3
+100142,1003,Sofia Smith,sofia.smith1003@example.com,UK,London,Books,Novel,4,477.67,15,1624.08,2025-05-29,2025-06-03,Shipped,Bank Transfer,2,False,0.0,3
+100143,1131,Liam Taylor,liam.taylor1131@example.com,UK,Bristol,Books,Cookbook,10,125.58,5,1193.01,2025-06-14,2025-06-19,Returned,UPI,3,False,0.0,3
+100144,1111,Zoe Smith,zoe.smith1111@example.com,India,Pune,Home,Kettle,9,53.97,15,412.87,2025-07-27,2025-07-30,Delivered,PayPal,4,False,0.0,3
+100145,1128,Liam Smith,liam.smith1128@example.com,Canada,Vancouver,Books,Novel,4,377.98,15,1285.13,2025-10-06,2025-10-11,Shipped,Card,4,True,0.0,2
+100146,1150,Mia Singh,mia.singh1150@example.com,Canada,Toronto,Home,Kettle,5,441.11,0,2205.55,2025-07-21,2025-07-24,Processing,PayPal,3,False,0.0,4
+100147,1095,Ethan Lee,ethan.lee1095@example.com,USA,Austin,Home,Blender,6,142.67,15,727.62,2025-08-23,2025-08-27,Delivered,PayPal,5,False,0.0,7
+100148,1165,Sofia Smith,sofia.smith1165@example.com,UK,Bristol,Fitness,Skipping Rope,8,105.03,25,630.18,2025-11-02,2025-11-06,Delivered,Card,1,True,0.0,4
+100149,1074,Sofia Müller,sofia.muller1074@example.com,Canada,Montreal,Books,Novel,7,96.95,30,475.05,2025-12-28,2026-01-02,Shipped,PayPal,1,False,0.0,5
+100150,1109,Ethan Müller,ethan.muller1109@example.com,USA,Austin,Books,Atlas,9,263.4,10,2133.54,2025-02-09,2025-02-13,Shipped,PayPal,1,True,0.0,7
+100151,1031,Mia Brown,mia.brown1031@example.com,Canada,Montreal,Home,Lamp,4,236.87,30,663.24,2025-09-18,2025-09-19,Delivered,UPI,5,False,0.0,5
+100152,1123,Arjun Taylor,arjun.taylor1123@example.com,UK,Bristol,Fitness,Skipping Rope,6,133.42,30,560.36,2025-03-24,2025-03-25,Processing,PayPal,3,False,0.0,2
+100153,1052,Sofia Brown,sofia.brown1052@example.com,Canada,Toronto,Electronics,Keyboard,5,27.36,30,95.76,2025-03-13,2025-03-16,Delivered,UPI,3,True,5.01,3
+100154,1139,Kai Müller,kai.muller1139@example.com,UK,Leeds,Books,Cookbook,10,243.34,10,2190.06,2025-10-17,2025-10-20,Processing,UPI,4,True,0.0,4
+100155,1160,Noah Patel,noah.patel1160@example.com,India,Mumbai,Fitness,Yoga Mat,4,479.87,25,1439.61,2025-01-26,2025-01-30,Processing,Card,3,True,0.0,4
+100156,1171,Noah Patel,noah.patel1171@example.com,Germany,Berlin,Fitness,Dumbbells,6,328.0,15,1672.8,2025-11-06,2025-11-09,Processing,UPI,3,False,0.0,2
+100157,1185,Lena Patel,lena.patel1185@example.com,USA,Austin,Books,Novel,2,250.28,0,500.56,2025-10-09,2025-10-12,Delivered,Bank Transfer,1,True,0.0,1
+100158,1024,Mia Khan,mia.khan1024@example.com,India,Pune,Fitness,Dumbbells,9,59.79,5,511.2,2025-12-30,2026-01-04,Delivered,Bank Transfer,1,False,0.0,3
+100159,1027,Noah Singh,noah.singh1027@example.com,India,Delhi,Electronics,Webcam,4,129.96,20,415.87,2025-09-01,2025-09-03,Delivered,PayPal,5,True,0.0,7
+100160,1185,Ava Singh,ava.singh1185@example.com,Germany,Hamburg,Home,Lamp,4,150.91,5,573.46,2025-11-15,2025-11-18,Delivered,PayPal,3,False,0.0,6
+100161,1076,Ethan Wong,ethan.wong1076@example.com,Canada,Toronto,Electronics,Headphones,6,383.58,15,1956.26,2025-02-13,2025-02-16,Shipped,PayPal,1,False,0.0,6
+100162,1005,Ethan Khan,ethan.khan1005@example.com,Germany,Berlin,Fitness,Yoga Mat,5,438.97,25,1646.14,2025-11-21,2025-11-24,Delivered,UPI,2,True,0.0,2
+100163,1057,Arjun Patel,arjun.patel1057@example.com,India,Pune,Electronics,Headphones,9,451.31,5,3858.7,2025-02-28,2025-03-05,Delivered,UPI,2,False,0.0,3
+100164,1167,Noah Brown,noah.brown1167@example.com,India,Delhi,Electronics,Headphones,6,492.36,15,2511.04,2025-04-25,2025-04-30,Delivered,PayPal,2,False,0.0,5
+100165,1070,Lena Brown,lena.brown1070@example.com,India,Delhi,Fitness,Yoga Mat,6,491.27,5,2800.24,2025-02-16,2025-02-19,Delivered,Bank Transfer,2,True,0.0,4
+100166,1015,Lena Wong,lena.wong1015@example.com,Canada,Vancouver,Fitness,Dumbbells,2,476.73,15,810.44,2025-05-27,2025-05-30,Delivered,UPI,4,True,0.0,3
+100167,1144,Zoe Brown,zoe.brown1144@example.com,UK,London,Fitness,Yoga Mat,1,40.55,5,38.52,2025-10-01,2025-10-04,Shipped,PayPal,1,False,10.49,3
+100168,1038,Noah Patel,noah.patel1038@example.com,USA,Austin,Books,Atlas,4,73.21,30,204.99,2025-04-08,2025-04-09,Shipped,UPI,2,True,0.0,1
+100169,1070,Arjun Lee,arjun.lee1070@example.com,UK,Bristol,Books,Atlas,10,155.71,0,1557.1,2025-10-28,2025-10-31,Delivered,UPI,3,True,0.0,7
+100170,1000,Lena Singh,lena.singh1000@example.com,USA,Austin,Electronics,Webcam,10,278.68,30,1950.76,2025-08-10,2025-08-12,Processing,UPI,3,False,0.0,7
+100171,1120,Ethan Smith,ethan.smith1120@example.com,USA,Chicago,Books,Cookbook,7,53.0,25,278.25,2025-08-18,2025-08-19,Processing,Card,5,False,0.0,1
+100172,1089,Mia Garcia,mia.garcia1089@example.com,USA,Chicago,Fitness,Yoga Mat,7,423.67,25,2224.27,2025-12-09,2025-12-10,Delivered,UPI,5,True,0.0,3
+100173,1173,Arjun Müller,arjun.muller1173@example.com,Germany,Hamburg,Fitness,Skipping Rope,4,310.29,25,930.87,2025-06-07,2025-06-10,Shipped,PayPal,2,True,0.0,4
+100174,1066,Ethan Wong,ethan.wong1066@example.com,Germany,Munich,Electronics,Headphones,2,273.47,5,519.59,2025-05-06,2025-05-07,Delivered,PayPal,3,True,0.0,6
+100175,1040,Ethan Wong,ethan.wong1040@example.com,Germany,Munich,Fitness,Dumbbells,1,86.83,30,60.78,2025-12-30,2026-01-03,Delivered,Bank Transfer,1,False,9.28,7
+100176,1033,Ethan Brown,ethan.brown1033@example.com,India,Mumbai,Fitness,Dumbbells,4,130.36,20,417.15,2025-07-23,2025-07-26,Delivered,Card,4,True,0.0,3
+100177,1040,Mia Khan,mia.khan1040@example.com,Germany,Munich,Fitness,Skipping Rope,4,84.35,30,236.18,2025-08-13,2025-08-15,Delivered,Bank Transfer,1,False,0.0,6
+100178,1090,Lena Khan,lena.khan1090@example.com,USA,Chicago,Electronics,Keyboard,2,426.71,30,597.39,2025-04-19,2025-04-23,Processing,Bank Transfer,1,False,0.0,7
+100179,1017,Zoe Garcia,zoe.garcia1017@example.com,Canada,Vancouver,Fitness,Skipping Rope,3,294.19,20,706.06,2025-03-20,2025-03-23,Processing,UPI,4,False,0.0,6
+100180,1080,Zoe Smith,zoe.smith1080@example.com,India,Mumbai,Books,Atlas,1,368.89,10,332.0,2025-03-03,2025-03-07,Processing,UPI,1,False,0.0,3
+100181,1170,Priya Brown,priya.brown1170@example.com,Canada,Toronto,Fitness,Dumbbells,7,151.54,0,1060.78,2025-03-23,2025-03-27,Delivered,UPI,3,False,0.0,6
+100182,1153,Ethan Patel,ethan.patel1153@example.com,USA,Austin,Electronics,Webcam,10,188.77,0,1887.7,2025-03-13,2025-03-14,Delivered,PayPal,1,True,0.0,3
+100183,1127,Liam Garcia,liam.garcia1127@example.com,India,Delhi,Books,Novel,7,205.4,10,1294.02,2025-09-30,2025-10-02,Returned,Bank Transfer,4,True,0.0,1
+100184,1178,Sofia Smith,sofia.smith1178@example.com,Germany,Munich,Books,Atlas,5,381.21,25,1429.54,2025-01-22,2025-01-25,Delivered,PayPal,4,True,0.0,6
+100185,1156,Ava Khan,ava.khan1156@example.com,India,Delhi,Electronics,Headphones,5,387.31,15,1646.07,2025-08-18,2025-08-23,Delivered,PayPal,3,False,0.0,6
+100186,1130,Arjun Lee,arjun.lee1130@example.com,India,Delhi,Books,Atlas,4,107.37,15,365.06,2025-12-13,2025-12-14,Delivered,PayPal,5,False,0.0,3
+100187,1172,Mia Taylor,mia.taylor1172@example.com,USA,Austin,Home,Blender,2,471.06,5,895.01,2025-10-07,2025-10-08,Delivered,Card,3,True,0.0,4
+100188,1024,Noah Müller,noah.muller1024@example.com,UK,London,Fitness,Skipping Rope,6,64.72,15,330.07,2025-05-28,2025-06-02,Delivered,PayPal,1,True,0.0,3
+100189,1163,Ava Smith,ava.smith1163@example.com,UK,Bristol,Home,Lamp,6,448.58,20,2153.18,2025-01-22,2025-01-27,Delivered,Card,1,False,0.0,1
+100190,1059,Sofia Lee,sofia.lee1059@example.com,UK,London,Books,Cookbook,1,54.7,30,38.29,2025-11-01,2025-11-02,Delivered,Bank Transfer,2,False,9.83,7
+100191,1146,Zoe Smith,zoe.smith1146@example.com,Germany,Munich,Books,Atlas,5,135.95,25,509.81,2025-01-02,2025-01-05,Delivered,Bank Transfer,2,True,0.0,1
+100192,1182,Ethan Smith,ethan.smith1182@example.com,Germany,Munich,Books,Novel,3,424.01,20,1017.62,2025-09-06,2025-09-10,Delivered,PayPal,2,False,0.0,4
+100193,1099,Lena Taylor,lena.taylor1099@example.com,Germany,Hamburg,Books,Novel,2,93.85,30,131.39,2025-09-02,2025-09-03,Delivered,UPI,2,False,0.0,1
+100194,1017,Ava Wong,ava.wong1017@example.com,UK,London,Books,Novel,8,209.72,10,1509.98,2025-03-12,2025-03-14,Delivered,PayPal,3,False,0.0,5
+100195,1074,Arjun Lee,arjun.lee1074@example.com,Canada,Vancouver,Electronics,Headphones,6,227.68,30,956.26,2025-09-28,2025-09-30,Processing,PayPal,1,True,0.0,7
+100196,1081,Zoe Wong,zoe.wong1081@example.com,USA,New York,Home,Blender,7,126.4,10,796.32,2025-03-06,2025-03-10,Delivered,PayPal,4,False,0.0,5
+100197,1187,Arjun Smith,arjun.smith1187@example.com,UK,London,Fitness,Dumbbells,8,356.57,0,2852.56,2025-03-24,2025-03-26,Shipped,PayPal,2,False,0.0,5
+100198,1188,Liam Smith,liam.smith1188@example.com,USA,Austin,Fitness,Yoga Mat,10,426.41,10,3837.69,2025-10-24,2025-10-27,Shipped,Card,4,False,0.0,6
+100199,1113,Kai Brown,kai.brown1113@example.com,UK,Bristol,Electronics,Headphones,9,437.91,0,3941.19,2025-12-24,2025-12-26,Delivered,Card,3,True,0.0,7
+100200,1190,Noah Smith,noah.smith1190@example.com,Canada,Vancouver,Electronics,Headphones,7,172.96,0,1210.72,2025-04-07,2025-04-11,Processing,UPI,5,False,0.0,7
+100201,1087,Lena Wong,lena.wong1087@example.com,UK,Leeds,Fitness,Skipping Rope,9,267.77,30,1686.95,2025-12-03,2025-12-04,Shipped,PayPal,3,False,0.0,2
+100202,1082,Lena Smith,lena.smith1082@example.com,Canada,Vancouver,Fitness,Skipping Rope,5,127.96,25,479.85,2025-11-30,2025-12-02,Delivered,UPI,2,True,0.0,4
+100203,1167,Ethan Khan,ethan.khan1167@example.com,India,Mumbai,Electronics,Headphones,10,126.17,5,1198.62,2025-10-08,2025-10-10,Delivered,PayPal,3,False,0.0,6
+100204,1133,Liam Wong,liam.wong1133@example.com,Germany,Munich,Electronics,Headphones,8,84.82,25,508.92,2025-02-21,2025-02-26,Delivered,UPI,4,True,0.0,3
+100205,1104,Mia Lee,mia.lee1104@example.com,India,Mumbai,Electronics,Headphones,7,470.31,0,3292.17,2025-04-20,2025-04-25,Returned,Bank Transfer,3,False,0.0,5
+100206,1091,Omar Müller,omar.muller1091@example.com,UK,Bristol,Fitness,Skipping Rope,10,444.55,5,4223.22,2025-09-05,2025-09-08,Shipped,UPI,3,False,0.0,1
+100207,1141,Sofia Singh,sofia.singh1141@example.com,Germany,Munich,Electronics,Webcam,6,389.79,20,1870.99,2025-12-31,2026-01-01,Processing,Bank Transfer,3,False,0.0,7
+100208,1150,Kai Khan,kai.khan1150@example.com,Canada,Toronto,Fitness,Skipping Rope,8,261.24,10,1880.93,2025-10-25,2025-10-29,Processing,UPI,2,True,0.0,5
+100209,1098,Noah Lee,noah.lee1098@example.com,UK,Leeds,Home,Lamp,3,247.85,25,557.66,2025-06-03,2025-06-06,Delivered,UPI,2,True,0.0,6
+100210,1006,Priya Singh,priya.singh1006@example.com,Germany,Hamburg,Home,Blender,10,267.22,30,1870.54,2025-03-27,2025-04-01,Shipped,PayPal,5,False,0.0,6
+100211,1020,Liam Müller,liam.muller1020@example.com,UK,London,Fitness,Yoga Mat,7,270.6,0,1894.2,2025-12-17,2025-12-19,Delivered,UPI,4,True,0.0,2
+100212,1028,Lena Lee,lena.lee1028@example.com,Germany,Hamburg,Fitness,Skipping Rope,8,220.11,0,1760.88,2025-04-11,2025-04-16,Shipped,Card,1,False,0.0,4
+100213,1092,Ethan Wong,ethan.wong1092@example.com,Germany,Munich,Fitness,Dumbbells,5,70.22,30,245.77,2025-05-05,2025-05-10,Delivered,UPI,5,False,0.0,7
+100214,1122,Lena Singh,lena.singh1122@example.com,India,Delhi,Books,Novel,9,67.2,15,514.08,2025-12-19,2025-12-21,Delivered,Bank Transfer,4,False,0.0,2
+100215,1160,Lena Smith,lena.smith1160@example.com,Germany,Hamburg,Books,Atlas,1,476.36,15,404.91,2025-07-25,2025-07-29,Shipped,Card,1,False,0.0,6
+100216,1046,Kai Khan,kai.khan1046@example.com,UK,Leeds,Books,Cookbook,2,243.61,15,414.14,2025-04-07,2025-04-09,Shipped,UPI,4,True,0.0,3
+100217,1157,Zoe Wong,zoe.wong1157@example.com,USA,New York,Fitness,Dumbbells,6,476.84,15,2431.88,2025-01-02,2025-01-04,Shipped,PayPal,3,False,0.0,5
+100218,1133,Ethan Taylor,ethan.taylor1133@example.com,USA,Austin,Home,Lamp,8,85.97,20,550.21,2025-06-06,2025-06-08,Delivered,PayPal,5,True,0.0,4
+100219,1010,Arjun Singh,arjun.singh1010@example.com,India,Mumbai,Electronics,Headphones,9,279.44,20,2011.97,2025-12-26,2025-12-30,Delivered,UPI,3,False,0.0,5
+100220,1070,Liam Patel,liam.patel1070@example.com,Canada,Vancouver,Fitness,Skipping Rope,5,107.82,5,512.14,2025-06-07,2025-06-09,Returned,Card,3,False,0.0,6
+100221,1060,Liam Khan,liam.khan1060@example.com,USA,Austin,Electronics,Headphones,7,130.33,20,729.85,2025-09-13,2025-09-17,Delivered,Card,2,False,0.0,3
+100222,1177,Arjun Wong,arjun.wong1177@example.com,India,Delhi,Books,Novel,6,19.88,20,95.42,2025-04-03,2025-04-06,Delivered,UPI,2,True,8.34,2
+100223,1184,Omar Taylor,omar.taylor1184@example.com,Germany,Hamburg,Books,Atlas,10,63.88,0,638.8,2025-10-11,2025-10-15,Delivered,Bank Transfer,4,False,0.0,3
+100224,1163,Arjun Smith,arjun.smith1163@example.com,UK,Leeds,Electronics,Headphones,7,458.84,10,2890.69,2025-10-11,2025-10-16,Delivered,Card,5,False,0.0,5
+100225,1105,Omar Müller,omar.muller1105@example.com,Germany,Berlin,Books,Cookbook,5,164.16,25,615.6,2025-08-11,2025-08-12,Delivered,Bank Transfer,5,False,0.0,6
+100226,1098,Noah Singh,noah.singh1098@example.com,UK,London,Electronics,Webcam,10,306.02,20,2448.16,2025-10-09,2025-10-14,Delivered,PayPal,4,False,0.0,6
+100227,1062,Zoe Smith,zoe.smith1062@example.com,Canada,Vancouver,Fitness,Dumbbells,2,235.18,0,470.36,2025-07-31,2025-08-01,Processing,Card,4,False,0.0,3
+100228,1154,Priya Wong,priya.wong1154@example.com,India,Mumbai,Electronics,Keyboard,10,203.22,0,2032.2,2025-05-19,2025-05-22,Processing,UPI,3,False,0.0,7
+100229,1017,Ethan Patel,ethan.patel1017@example.com,India,Delhi,Home,Lamp,2,268.28,20,429.25,2025-09-27,2025-09-29,Processing,Card,2,False,0.0,1
+100230,1054,Ava Garcia,ava.garcia1054@example.com,USA,Chicago,Fitness,Dumbbells,3,97.68,15,249.08,2025-11-01,2025-11-05,Delivered,Bank Transfer,4,False,0.0,1
+100231,1027,Ava Taylor,ava.taylor1027@example.com,India,Pune,Fitness,Dumbbells,9,494.36,30,3114.47,2025-11-03,2025-11-07,Delivered,PayPal,2,False,0.0,1
+100232,1098,Kai Garcia,kai.garcia1098@example.com,Canada,Toronto,Home,Blender,8,410.06,15,2788.41,2025-03-19,2025-03-24,Shipped,UPI,2,True,0.0,7
+100233,1059,Priya Lee,priya.lee1059@example.com,USA,Austin,Books,Novel,10,372.1,30,2604.7,2025-09-04,2025-09-07,Processing,UPI,5,True,0.0,2
+100234,1039,Mia Müller,mia.muller1039@example.com,Germany,Munich,Books,Novel,8,237.04,5,1801.5,2025-01-02,2025-01-07,Delivered,PayPal,3,True,0.0,5
+100235,1075,Mia Wong,mia.wong1075@example.com,India,Delhi,Electronics,Webcam,7,80.67,15,479.99,2025-07-28,2025-07-30,Shipped,Card,2,False,0.0,6
+100236,1172,Ava Singh,ava.singh1172@example.com,Germany,Munich,Fitness,Skipping Rope,4,460.73,0,1842.92,2025-07-28,2025-07-30,Shipped,UPI,5,False,0.0,6
+100237,1111,Kai Smith,kai.smith1111@example.com,Germany,Berlin,Fitness,Skipping Rope,1,173.99,20,139.19,2025-05-13,2025-05-15,Shipped,Card,5,True,0.0,7
+100238,1164,Liam Brown,liam.brown1164@example.com,India,Pune,Home,Lamp,2,29.8,5,56.62,2025-12-29,2026-01-01,Shipped,PayPal,2,True,4.4,1
+100239,1182,Omar Brown,omar.brown1182@example.com,UK,London,Fitness,Skipping Rope,3,174.49,15,444.95,2025-11-19,2025-11-23,Delivered,PayPal,3,False,0.0,3
+100240,1180,Noah Khan,noah.khan1180@example.com,Germany,Berlin,Books,Novel,1,398.26,10,358.43,2025-01-15,2025-01-20,Delivered,UPI,3,True,0.0,4
+100241,1070,Ethan Müller,ethan.muller1070@example.com,USA,Austin,Books,Cookbook,6,313.24,5,1785.47,2025-03-18,2025-03-20,Delivered,Card,4,True,0.0,5
+100242,1175,Mia Singh,mia.singh1175@example.com,India,Delhi,Books,Novel,8,376.67,0,3013.36,2025-03-17,2025-03-19,Delivered,UPI,5,True,0.0,5
+100243,1181,Omar Singh,omar.singh1181@example.com,USA,Austin,Fitness,Skipping Rope,10,397.85,15,3381.72,2025-11-24,2025-11-29,Processing,Bank Transfer,3,False,0.0,4
+100244,1191,Ava Brown,ava.brown1191@example.com,Germany,Munich,Home,Lamp,5,109.92,30,384.72,2025-07-09,2025-07-12,Shipped,Card,4,True,0.0,3
+100245,1070,Ethan Garcia,ethan.garcia1070@example.com,Germany,Berlin,Books,Atlas,9,462.27,5,3952.41,2025-09-24,2025-09-26,Delivered,Card,3,True,0.0,1
+100246,1045,Mia Brown,mia.brown1045@example.com,USA,New York,Home,Lamp,10,221.8,10,1996.2,2025-10-23,2025-10-28,Processing,Card,5,False,0.0,4
+100247,1116,Mia Lee,mia.lee1116@example.com,Germany,Munich,Fitness,Skipping Rope,9,321.31,5,2747.2,2025-10-08,2025-10-11,Shipped,Bank Transfer,3,True,0.0,2
+100248,1186,Noah Müller,noah.muller1186@example.com,India,Mumbai,Home,Blender,5,6.14,25,23.02,2025-02-02,2025-02-07,Shipped,Card,2,True,8.94,4
+100249,1180,Sofia Wong,sofia.wong1180@example.com,Germany,Hamburg,Home,Lamp,4,496.72,10,1788.19,2025-02-21,2025-02-26,Delivered,PayPal,3,False,0.0,6
+100250,1114,Ethan Brown,ethan.brown1114@example.com,USA,New York,Electronics,Headphones,10,144.04,30,1008.28,2025-05-25,2025-05-30,Processing,Bank Transfer,5,False,0.0,4
+100251,1029,Zoe Smith,zoe.smith1029@example.com,USA,Austin,Books,Atlas,3,35.72,5,101.8,2025-05-04,2025-05-07,Delivered,PayPal,4,True,0.0,5
+100252,1084,Ethan Patel,ethan.patel1084@example.com,India,Mumbai,Electronics,Headphones,5,231.84,0,1159.2,2025-09-30,2025-10-04,Delivered,UPI,1,True,0.0,1
+100253,1142,Kai Wong,kai.wong1142@example.com,USA,New York,Electronics,Headphones,1,68.87,20,55.1,2025-02-27,2025-03-04,Delivered,Card,1,True,6.91,5
+100254,1112,Ethan Wong,ethan.wong1112@example.com,UK,London,Books,Cookbook,8,80.4,20,514.56,2025-05-16,2025-05-18,Shipped,Card,3,False,0.0,4
+100255,1069,Ethan Müller,ethan.muller1069@example.com,Germany,Berlin,Fitness,Yoga Mat,7,317.98,30,1558.1,2025-03-28,2025-03-29,Shipped,Card,5,False,0.0,1
+100256,1068,Mia Garcia,mia.garcia1068@example.com,USA,Chicago,Home,Lamp,1,199.5,30,139.65,2025-03-10,2025-03-12,Delivered,Bank Transfer,3,True,0.0,2
+100257,1011,Mia Khan,mia.khan1011@example.com,Germany,Berlin,Fitness,Dumbbells,3,461.32,30,968.77,2025-03-05,2025-03-09,Delivered,Card,3,False,0.0,6
+100258,1057,Liam Patel,liam.patel1057@example.com,USA,Chicago,Home,Kettle,6,162.98,20,782.3,2025-03-13,2025-03-16,Processing,Card,4,False,0.0,7
+100259,1133,Priya Singh,priya.singh1133@example.com,USA,Chicago,Electronics,Webcam,6,364.46,10,1968.08,2025-07-25,2025-07-26,Shipped,Bank Transfer,3,True,0.0,4
+100260,1048,Ava Garcia,ava.garcia1048@example.com,India,Mumbai,Fitness,Skipping Rope,9,233.24,15,1784.29,2025-05-30,2025-06-02,Delivered,UPI,5,True,0.0,7
+100261,1198,Noah Taylor,noah.taylor1198@example.com,Germany,Berlin,Electronics,Headphones,3,331.68,0,995.04,2025-06-08,2025-06-09,Returned,UPI,4,False,0.0,2
+100262,1016,Noah Wong,noah.wong1016@example.com,USA,New York,Fitness,Dumbbells,10,301.85,15,2565.72,2025-06-24,2025-06-27,Shipped,PayPal,4,False,0.0,3
+100263,1117,Mia Smith,mia.smith1117@example.com,UK,London,Books,Novel,5,239.03,10,1075.64,2025-09-28,2025-10-01,Returned,PayPal,4,False,0.0,7
+100264,1099,Omar Müller,omar.muller1099@example.com,Canada,Toronto,Books,Atlas,9,475.28,0,4277.52,2025-11-11,2025-11-15,Returned,Bank Transfer,4,True,0.0,2
+100265,1166,Priya Singh,priya.singh1166@example.com,Canada,Toronto,Home,Blender,3,174.64,5,497.72,2025-07-12,2025-07-15,Processing,UPI,1,True,0.0,5
+100266,1177,Kai Patel,kai.patel1177@example.com,India,Delhi,Books,Novel,1,92.73,15,78.82,2025-08-23,2025-08-26,Shipped,PayPal,3,True,6.18,2
+100267,1108,Ethan Khan,ethan.khan1108@example.com,India,Mumbai,Fitness,Skipping Rope,1,340.66,10,306.59,2025-09-27,2025-10-01,Shipped,Bank Transfer,1,True,0.0,3
+100268,1126,Kai Smith,kai.smith1126@example.com,UK,London,Home,Lamp,4,423.77,30,1186.56,2025-09-09,2025-09-13,Delivered,UPI,3,True,0.0,4
+100269,1139,Ava Patel,ava.patel1139@example.com,Germany,Munich,Electronics,Headphones,10,24.93,15,211.9,2025-02-19,2025-02-24,Delivered,UPI,1,True,0.0,3
+100270,1104,Arjun Smith,arjun.smith1104@example.com,India,Delhi,Home,Kettle,1,227.57,30,159.3,2025-12-25,2025-12-27,Shipped,Bank Transfer,3,False,0.0,7
+100271,1036,Omar Müller,omar.muller1036@example.com,UK,London,Fitness,Dumbbells,4,446.78,20,1429.7,2025-03-02,2025-03-05,Delivered,Card,2,False,0.0,7
+100272,1085,Arjun Lee,arjun.lee1085@example.com,USA,New York,Books,Atlas,2,376.06,0,752.12,2025-05-31,2025-06-02,Processing,Card,1,False,0.0,4
+100273,1048,Kai Patel,kai.patel1048@example.com,USA,Chicago,Electronics,Keyboard,10,495.94,5,4711.43,2025-08-27,2025-08-30,Delivered,PayPal,1,False,0.0,4
+100274,1092,Mia Taylor,mia.taylor1092@example.com,Canada,Toronto,Fitness,Skipping Rope,7,268.05,20,1501.08,2025-05-28,2025-05-29,Delivered,Bank Transfer,3,True,0.0,1
+100275,1123,Ava Müller,ava.muller1123@example.com,India,Delhi,Books,Cookbook,8,331.7,15,2255.56,2025-03-30,2025-04-02,Delivered,Card,1,False,0.0,2
+100276,1041,Omar Smith,omar.smith1041@example.com,India,Pune,Books,Novel,8,154.73,10,1114.06,2025-12-04,2025-12-05,Delivered,Bank Transfer,5,True,0.0,1
+100277,1049,Ava Brown,ava.brown1049@example.com,India,Delhi,Home,Lamp,7,474.03,15,2820.48,2025-01-27,2025-01-30,Delivered,Bank Transfer,4,False,0.0,6
+100278,1164,Omar Lee,omar.lee1164@example.com,Germany,Berlin,Electronics,Webcam,8,186.34,30,1043.5,2025-03-31,2025-04-05,Delivered,Bank Transfer,4,False,0.0,2
+100279,1075,Lena Patel,lena.patel1075@example.com,USA,Austin,Home,Lamp,1,370.56,10,333.5,2025-12-29,2026-01-03,Processing,UPI,1,True,0.0,3
+100280,1039,Sofia Smith,sofia.smith1039@example.com,USA,New York,Books,Cookbook,9,204.55,0,1840.95,2025-09-24,2025-09-27,Delivered,UPI,4,False,0.0,6
+100281,1142,Zoe Wong,zoe.wong1142@example.com,UK,London,Books,Novel,8,283.1,10,2038.32,2025-02-01,2025-02-02,Delivered,PayPal,4,False,0.0,5
+100282,1143,Sofia Khan,sofia.khan1143@example.com,India,Mumbai,Fitness,Yoga Mat,8,361.29,30,2023.22,2025-10-03,2025-10-05,Delivered,Card,2,True,0.0,5
+100283,1165,Noah Brown,noah.brown1165@example.com,Germany,Hamburg,Electronics,Keyboard,4,256.92,25,770.76,2025-12-20,2025-12-21,Delivered,Bank Transfer,1,True,0.0,1
+100284,1151,Zoe Lee,zoe.lee1151@example.com,India,Pune,Electronics,Headphones,9,454.01,25,3064.57,2025-02-05,2025-02-09,Delivered,PayPal,3,False,0.0,4
+100285,1198,Liam Wong,liam.wong1198@example.com,India,Delhi,Home,Blender,4,212.55,30,595.14,2025-06-01,2025-06-06,Shipped,UPI,4,True,0.0,4
+100286,1114,Omar Brown,omar.brown1114@example.com,Canada,Vancouver,Fitness,Skipping Rope,1,325.3,0,325.3,2025-06-20,2025-06-23,Shipped,PayPal,1,False,0.0,3
+100287,1057,Lena Khan,lena.khan1057@example.com,USA,Chicago,Electronics,Headphones,10,174.47,5,1657.46,2025-02-17,2025-02-18,Delivered,PayPal,1,True,0.0,6
+100288,1172,Omar Smith,omar.smith1172@example.com,India,Delhi,Fitness,Yoga Mat,3,207.04,0,621.12,2025-03-15,2025-03-16,Delivered,PayPal,2,False,0.0,7
+100289,1052,Omar Brown,omar.brown1052@example.com,India,Delhi,Fitness,Yoga Mat,2,222.82,0,445.64,2025-03-05,2025-03-10,Delivered,Bank Transfer,3,True,0.0,2
+100290,1058,Mia Khan,mia.khan1058@example.com,India,Pune,Electronics,Webcam,7,67.27,25,353.17,2025-03-09,2025-03-11,Delivered,Bank Transfer,3,True,0.0,3
+100291,1165,Ava Patel,ava.patel1165@example.com,Canada,Montreal,Electronics,Keyboard,3,50.4,30,105.84,2025-05-28,2025-05-29,Processing,Bank Transfer,3,False,0.0,3
+100292,1176,Kai Taylor,kai.taylor1176@example.com,UK,London,Home,Blender,9,335.41,5,2867.76,2025-06-19,2025-06-20,Delivered,PayPal,2,True,0.0,6
+100293,1067,Zoe Taylor,zoe.taylor1067@example.com,Canada,Vancouver,Fitness,Yoga Mat,5,329.48,25,1235.55,2025-03-28,2025-03-30,Processing,PayPal,1,False,0.0,1
+100294,1145,Liam Müller,liam.muller1145@example.com,UK,Bristol,Books,Atlas,1,333.14,15,283.17,2025-04-16,2025-04-20,Delivered,UPI,1,True,0.0,7
+100295,1184,Kai Brown,kai.brown1184@example.com,India,Delhi,Home,Lamp,10,14.78,0,147.8,2025-03-12,2025-03-17,Delivered,Card,1,True,0.0,6
+100296,1159,Kai Patel,kai.patel1159@example.com,India,Mumbai,Home,Kettle,6,166.64,30,699.89,2025-10-18,2025-10-20,Delivered,UPI,4,False,0.0,4
+100297,1000,Zoe Khan,zoe.khan1000@example.com,Canada,Montreal,Books,Novel,3,102.92,30,216.13,2025-03-19,2025-03-23,Delivered,Bank Transfer,4,True,0.0,5
+100298,1132,Omar Patel,omar.patel1132@example.com,India,Delhi,Home,Kettle,7,390.18,15,2321.57,2025-11-28,2025-11-29,Returned,Card,3,True,0.0,7
+100299,1033,Ava Brown,ava.brown1033@example.com,UK,Leeds,Home,Lamp,6,431.01,20,2068.85,2025-07-16,2025-07-17,Delivered,PayPal,1,False,0.0,6
+100300,1169,Liam Khan,liam.khan1169@example.com,USA,Chicago,Home,Lamp,1,127.11,10,114.4,2025-10-20,2025-10-21,Processing,Card,3,False,0.0,2
+100301,1013,Mia Garcia,mia.garcia1013@example.com,UK,London,Electronics,Keyboard,8,335.59,25,2013.54,2025-08-21,2025-08-26,Processing,UPI,5,False,0.0,1
+100302,1198,Priya Khan,priya.khan1198@example.com,Canada,Vancouver,Home,Lamp,5,69.03,15,293.38,2025-04-08,2025-04-11,Delivered,Card,2,False,0.0,5
+100303,1035,Liam Müller,liam.muller1035@example.com,USA,Chicago,Fitness,Yoga Mat,7,141.2,30,691.88,2025-08-08,2025-08-13,Delivered,PayPal,3,False,0.0,2
+100304,1084,Ava Lee,ava.lee1084@example.com,Canada,Montreal,Books,Cookbook,9,73.63,0,662.67,2025-04-11,2025-04-12,Delivered,Bank Transfer,3,False,0.0,1
+100305,1046,Lena Garcia,lena.garcia1046@example.com,India,Mumbai,Fitness,Yoga Mat,7,145.34,5,966.51,2025-02-13,2025-02-14,Delivered,Bank Transfer,2,False,0.0,7
+100306,1162,Omar Lee,omar.lee1162@example.com,USA,New York,Books,Cookbook,7,338.99,30,1661.05,2025-04-03,2025-04-08,Shipped,PayPal,3,True,0.0,4
+100307,1078,Lena Singh,lena.singh1078@example.com,UK,Leeds,Fitness,Skipping Rope,3,455.61,10,1230.15,2025-04-11,2025-04-12,Delivered,Card,3,False,0.0,5
+100308,1148,Omar Wong,omar.wong1148@example.com,India,Pune,Electronics,Headphones,3,105.25,10,284.18,2025-02-19,2025-02-20,Processing,PayPal,3,True,0.0,2
+100309,1013,Omar Brown,omar.brown1013@example.com,UK,Leeds,Home,Blender,5,273.33,25,1024.99,2025-01-09,2025-01-12,Shipped,Card,4,False,0.0,1
+100310,1090,Priya Wong,priya.wong1090@example.com,USA,Chicago,Books,Novel,9,352.19,5,3011.22,2025-12-11,2025-12-15,Delivered,UPI,3,True,0.0,1
+100311,1182,Arjun Müller,arjun.muller1182@example.com,Germany,Hamburg,Electronics,Keyboard,6,476.7,15,2431.17,2025-07-07,2025-07-09,Shipped,PayPal,1,False,0.0,3
+100312,1185,Sofia Müller,sofia.muller1185@example.com,Germany,Munich,Books,Novel,4,306.98,10,1105.13,2025-05-27,2025-05-30,Delivered,PayPal,1,False,0.0,1
+100313,1041,Ethan Khan,ethan.khan1041@example.com,USA,New York,Fitness,Yoga Mat,8,131.28,5,997.73,2025-12-06,2025-12-10,Processing,Card,3,False,0.0,3
+100314,1078,Liam Khan,liam.khan1078@example.com,UK,Bristol,Home,Lamp,9,314.61,30,1982.04,2025-03-24,2025-03-27,Delivered,Bank Transfer,5,False,0.0,3
+100315,1081,Omar Lee,omar.lee1081@example.com,UK,Leeds,Books,Atlas,10,163.64,5,1554.58,2025-05-28,2025-05-30,Returned,UPI,1,True,0.0,4
+100316,1113,Mia Müller,mia.muller1113@example.com,Germany,Berlin,Books,Novel,3,488.18,0,1464.54,2025-11-06,2025-11-07,Processing,Bank Transfer,1,True,0.0,5
+100317,1107,Kai Wong,kai.wong1107@example.com,Germany,Munich,Electronics,Webcam,8,202.84,20,1298.18,2025-08-19,2025-08-22,Processing,PayPal,4,True,0.0,3
+100318,1021,Ethan Brown,ethan.brown1021@example.com,Germany,Hamburg,Electronics,Webcam,6,344.29,30,1446.02,2025-05-26,2025-05-31,Delivered,PayPal,3,False,0.0,4
+100319,1152,Sofia Khan,sofia.khan1152@example.com,Canada,Vancouver,Fitness,Dumbbells,5,16.5,0,82.5,2025-04-04,2025-04-08,Processing,PayPal,2,False,8.32,1
+100320,1045,Ava Taylor,ava.taylor1045@example.com,Germany,Munich,Books,Novel,4,203.03,20,649.7,2025-01-13,2025-01-18,Delivered,Bank Transfer,2,True,0.0,3
+100321,1062,Priya Khan,priya.khan1062@example.com,UK,Leeds,Electronics,Webcam,2,438.18,15,744.91,2025-02-01,2025-02-02,Shipped,Card,4,True,0.0,7
+100322,1168,Zoe Garcia,zoe.garcia1168@example.com,USA,Austin,Fitness,Skipping Rope,3,307.06,25,690.88,2025-03-01,2025-03-02,Delivered,PayPal,3,True,0.0,7
+100323,1137,Zoe Taylor,zoe.taylor1137@example.com,Germany,Hamburg,Electronics,Headphones,6,224.75,0,1348.5,2025-10-15,2025-10-18,Delivered,Card,4,False,0.0,4
+100324,1079,Mia Taylor,mia.taylor1079@example.com,Canada,Toronto,Fitness,Skipping Rope,9,468.29,30,2950.23,2025-08-22,2025-08-23,Delivered,UPI,2,True,0.0,7
+100325,1182,Kai Singh,kai.singh1182@example.com,Canada,Vancouver,Fitness,Skipping Rope,9,427.72,20,3079.58,2025-06-08,2025-06-11,Delivered,Bank Transfer,3,False,0.0,4
+100326,1078,Ethan Singh,ethan.singh1078@example.com,UK,Leeds,Electronics,Headphones,2,164.5,25,246.75,2025-10-13,2025-10-18,Delivered,Bank Transfer,5,False,0.0,1
+100327,1113,Sofia Patel,sofia.patel1113@example.com,UK,London,Fitness,Yoga Mat,7,274.55,10,1729.67,2025-02-28,2025-03-02,Processing,UPI,2,True,0.0,7
+100328,1049,Zoe Khan,zoe.khan1049@example.com,USA,Austin,Books,Atlas,1,247.46,30,173.22,2025-03-18,2025-03-21,Delivered,UPI,2,True,0.0,3
+100329,1036,Ava Taylor,ava.taylor1036@example.com,USA,New York,Books,Novel,7,317.94,20,1780.46,2025-05-24,2025-05-28,Shipped,PayPal,1,False,0.0,5
+100330,1098,Sofia Singh,sofia.singh1098@example.com,India,Delhi,Electronics,Keyboard,4,170.39,0,681.56,2025-12-01,2025-12-02,Delivered,UPI,4,True,0.0,5
+100331,1112,Noah Brown,noah.brown1112@example.com,India,Mumbai,Electronics,Headphones,5,125.88,30,440.58,2025-08-13,2025-08-18,Shipped,Card,1,False,0.0,3
+100332,1161,Mia Patel,mia.patel1161@example.com,UK,London,Electronics,Webcam,8,456.77,25,2740.62,2025-11-07,2025-11-09,Shipped,UPI,2,False,0.0,6
+100333,1078,Sofia Brown,sofia.brown1078@example.com,UK,Bristol,Home,Lamp,5,462.32,10,2080.44,2025-04-01,2025-04-06,Delivered,UPI,4,False,0.0,4
+100334,1179,Sofia Müller,sofia.muller1179@example.com,Canada,Toronto,Electronics,Headphones,9,422.44,15,3231.67,2025-11-06,2025-11-10,Shipped,PayPal,1,False,0.0,3
+100335,1121,Kai Taylor,kai.taylor1121@example.com,India,Mumbai,Books,Novel,6,489.21,10,2641.73,2025-01-27,2025-01-28,Processing,Bank Transfer,5,False,0.0,3
+100336,1014,Zoe Khan,zoe.khan1014@example.com,Canada,Montreal,Books,Novel,10,373.77,15,3177.04,2025-03-25,2025-03-29,Processing,PayPal,3,True,0.0,6
+100337,1147,Omar Patel,omar.patel1147@example.com,Canada,Montreal,Books,Cookbook,7,383.51,30,1879.2,2025-07-10,2025-07-11,Delivered,UPI,2,True,0.0,2
+100338,1114,Mia Smith,mia.smith1114@example.com,UK,London,Electronics,Headphones,3,382.48,30,803.21,2025-01-19,2025-01-22,Delivered,PayPal,3,True,0.0,1
+100339,1077,Lena Wong,lena.wong1077@example.com,UK,London,Electronics,Webcam,8,242.9,5,1846.04,2025-11-10,2025-11-15,Shipped,Bank Transfer,4,False,0.0,7
+100340,1093,Arjun Taylor,arjun.taylor1093@example.com,Canada,Montreal,Books,Cookbook,5,230.94,30,808.29,2025-11-13,2025-11-18,Delivered,UPI,3,False,0.0,3
+100341,1060,Ava Lee,ava.lee1060@example.com,Germany,Hamburg,Home,Lamp,6,123.91,15,631.94,2025-07-17,2025-07-22,Processing,UPI,5,True,0.0,5
+100342,1122,Zoe Patel,zoe.patel1122@example.com,UK,Bristol,Fitness,Skipping Rope,2,324.19,20,518.7,2025-04-22,2025-04-25,Delivered,Card,5,True,0.0,6
+100343,1113,Zoe Smith,zoe.smith1113@example.com,Germany,Munich,Books,Cookbook,2,148.21,25,222.32,2025-02-06,2025-02-09,Processing,Bank Transfer,2,False,0.0,6
+100344,1089,Mia Patel,mia.patel1089@example.com,India,Mumbai,Electronics,Webcam,6,132.62,15,676.36,2025-08-14,2025-08-16,Delivered,Bank Transfer,4,True,0.0,5
+100345,1057,Ethan Lee,ethan.lee1057@example.com,Canada,Montreal,Electronics,Headphones,2,295.05,15,501.58,2025-07-16,2025-07-21,Delivered,Card,2,False,0.0,5
+100346,1079,Arjun Lee,arjun.lee1079@example.com,UK,London,Electronics,Webcam,10,207.94,15,1767.49,2025-10-05,2025-10-08,Returned,UPI,5,False,0.0,6
+100347,1099,Ava Wong,ava.wong1099@example.com,Canada,Toronto,Electronics,Keyboard,9,113.33,30,713.98,2025-08-08,2025-08-12,Processing,UPI,2,True,0.0,7
+100348,1094,Liam Smith,liam.smith1094@example.com,Canada,Montreal,Electronics,Webcam,8,408.95,10,2944.44,2025-02-16,2025-02-18,Processing,Bank Transfer,2,True,0.0,1
+100349,1061,Omar Patel,omar.patel1061@example.com,USA,Chicago,Books,Cookbook,8,430.98,5,3275.45,2025-02-14,2025-02-18,Returned,Card,4,True,0.0,6
+100350,1116,Ethan Taylor,ethan.taylor1116@example.com,USA,New York,Fitness,Skipping Rope,6,88.01,10,475.25,2025-10-13,2025-10-15,Delivered,Card,4,False,0.0,2
+100351,1045,Priya Taylor,priya.taylor1045@example.com,India,Mumbai,Books,Cookbook,1,8.72,5,8.28,2025-02-28,2025-03-04,Delivered,UPI,1,True,5.61,7
+100352,1100,Arjun Lee,arjun.lee1100@example.com,USA,Chicago,Books,Novel,4,171.38,10,616.97,2025-12-09,2025-12-10,Delivered,PayPal,3,True,0.0,1
+100353,1024,Arjun Patel,arjun.patel1024@example.com,UK,London,Books,Novel,5,399.77,0,1998.85,2025-02-08,2025-02-09,Delivered,Card,2,False,0.0,2
+100354,1094,Ethan Smith,ethan.smith1094@example.com,India,Pune,Electronics,Webcam,10,420.39,0,4203.9,2025-09-23,2025-09-25,Delivered,PayPal,4,True,0.0,2
+100355,1156,Zoe Smith,zoe.smith1156@example.com,Canada,Vancouver,Home,Kettle,3,73.47,25,165.31,2025-12-22,2025-12-25,Processing,PayPal,3,False,0.0,5
+100356,1163,Omar Garcia,omar.garcia1163@example.com,Canada,Vancouver,Books,Cookbook,5,388.3,0,1941.5,2025-06-11,2025-06-15,Delivered,Bank Transfer,5,True,0.0,1
+100357,1138,Kai Wong,kai.wong1138@example.com,USA,Chicago,Electronics,Webcam,4,62.27,15,211.72,2025-01-21,2025-01-23,Delivered,Card,5,True,0.0,1
+100358,1149,Mia Garcia,mia.garcia1149@example.com,Canada,Vancouver,Electronics,Headphones,2,198.08,25,297.12,2025-11-16,2025-11-17,Delivered,Card,4,True,0.0,4
+100359,1013,Lena Müller,lena.muller1013@example.com,USA,Chicago,Fitness,Yoga Mat,2,499.31,25,748.96,2025-03-10,2025-03-12,Delivered,Card,4,True,0.0,7
+100360,1068,Kai Lee,kai.lee1068@example.com,Germany,Hamburg,Books,Cookbook,4,100.33,15,341.12,2025-07-12,2025-07-15,Delivered,Bank Transfer,5,True,0.0,4
+100361,1130,Ava Smith,ava.smith1130@example.com,Canada,Vancouver,Books,Cookbook,1,81.21,5,77.15,2025-12-26,2025-12-29,Shipped,PayPal,1,False,8.04,4
+100362,1160,Omar Wong,omar.wong1160@example.com,Canada,Vancouver,Books,Atlas,1,214.29,30,150.0,2025-09-29,2025-10-03,Delivered,PayPal,4,True,0.0,5
+100363,1116,Zoe Wong,zoe.wong1116@example.com,UK,Leeds,Electronics,Webcam,4,311.74,25,935.22,2025-01-17,2025-01-19,Shipped,Bank Transfer,4,False,0.0,4
+100364,1170,Kai Lee,kai.lee1170@example.com,Canada,Toronto,Books,Novel,3,466.79,20,1120.3,2025-10-27,2025-10-31,Processing,PayPal,1,False,0.0,3
+100365,1054,Arjun Wong,arjun.wong1054@example.com,USA,Austin,Books,Atlas,6,490.51,0,2943.06,2025-02-28,2025-03-04,Shipped,Card,5,False,0.0,5
+100366,1030,Sofia Khan,sofia.khan1030@example.com,India,Delhi,Fitness,Dumbbells,1,39.47,0,39.47,2025-10-01,2025-10-05,Shipped,PayPal,4,False,4.92,1
+100367,1017,Liam Singh,liam.singh1017@example.com,India,Pune,Books,Atlas,4,73.31,10,263.92,2025-08-15,2025-08-18,Delivered,PayPal,2,True,0.0,2
+100368,1116,Liam Brown,liam.brown1116@example.com,UK,Bristol,Books,Novel,5,396.42,5,1883.0,2025-04-16,2025-04-21,Delivered,Card,3,True,0.0,5
+100369,1133,Kai Taylor,kai.taylor1133@example.com,USA,Austin,Home,Lamp,10,138.96,30,972.72,2025-06-04,2025-06-06,Delivered,PayPal,3,False,0.0,3
+100370,1057,Arjun Garcia,arjun.garcia1057@example.com,Germany,Hamburg,Electronics,Headphones,7,443.0,5,2945.95,2025-02-13,2025-02-17,Returned,UPI,5,False,0.0,1
+100371,1156,Arjun Patel,arjun.patel1156@example.com,UK,Bristol,Home,Kettle,9,333.41,5,2850.66,2025-12-27,2025-12-28,Shipped,Card,5,True,0.0,1
+100372,1147,Noah Taylor,noah.taylor1147@example.com,Germany,Munich,Electronics,Headphones,4,60.36,30,169.01,2025-03-28,2025-03-29,Delivered,UPI,5,False,0.0,7
+100373,1072,Noah Smith,noah.smith1072@example.com,India,Pune,Electronics,Webcam,5,417.1,25,1564.12,2025-04-23,2025-04-28,Delivered,UPI,4,False,0.0,3
+100374,1047,Omar Khan,omar.khan1047@example.com,UK,London,Electronics,Webcam,5,92.3,5,438.42,2025-07-03,2025-07-06,Processing,UPI,1,False,0.0,1
+100375,1148,Mia Patel,mia.patel1148@example.com,Canada,Montreal,Fitness,Yoga Mat,9,214.63,10,1738.5,2025-09-03,2025-09-07,Shipped,UPI,5,True,0.0,6
+100376,1134,Priya Garcia,priya.garcia1134@example.com,USA,New York,Fitness,Skipping Rope,10,278.33,15,2365.8,2025-07-04,2025-07-08,Delivered,PayPal,1,True,0.0,4
+100377,1034,Mia Singh,mia.singh1034@example.com,Germany,Hamburg,Fitness,Yoga Mat,10,252.88,20,2023.04,2025-07-04,2025-07-08,Processing,UPI,1,True,0.0,4
+100378,1051,Mia Singh,mia.singh1051@example.com,Germany,Berlin,Fitness,Yoga Mat,8,344.65,30,1930.04,2025-08-01,2025-08-03,Shipped,UPI,1,True,0.0,7
+100379,1097,Liam Garcia,liam.garcia1097@example.com,UK,Leeds,Fitness,Dumbbells,6,328.08,30,1377.94,2025-11-10,2025-11-11,Shipped,Bank Transfer,5,True,0.0,3
+100380,1102,Kai Lee,kai.lee1102@example.com,UK,London,Fitness,Yoga Mat,6,496.06,30,2083.45,2025-05-25,2025-05-26,Delivered,Card,3,True,0.0,5
+100381,1033,Kai Brown,kai.brown1033@example.com,USA,New York,Electronics,Headphones,10,499.71,0,4997.1,2025-10-31,2025-11-05,Delivered,UPI,2,True,0.0,6
+100382,1189,Liam Taylor,liam.taylor1189@example.com,Canada,Montreal,Books,Novel,3,260.65,5,742.85,2025-10-15,2025-10-17,Returned,Card,1,True,0.0,5
+100383,1077,Ethan Singh,ethan.singh1077@example.com,Canada,Montreal,Home,Blender,4,52.12,15,177.21,2025-12-17,2025-12-20,Delivered,Bank Transfer,3,True,0.0,2
+100384,1076,Arjun Patel,arjun.patel1076@example.com,UK,London,Electronics,Headphones,9,365.28,0,3287.52,2025-11-30,2025-12-03,Delivered,Card,4,True,0.0,5
+100385,1012,Ethan Smith,ethan.smith1012@example.com,USA,New York,Books,Novel,4,488.45,10,1758.42,2025-10-19,2025-10-20,Delivered,Bank Transfer,5,True,0.0,6
+100386,1175,Lena Müller,lena.muller1175@example.com,USA,Austin,Fitness,Dumbbells,3,162.57,5,463.32,2025-04-01,2025-04-04,Delivered,Card,3,False,0.0,1
+100387,1047,Mia Garcia,mia.garcia1047@example.com,USA,Austin,Electronics,Keyboard,6,233.3,30,979.86,2025-10-10,2025-10-11,Processing,UPI,4,False,0.0,2
+100388,1197,Ava Khan,ava.khan1197@example.com,Canada,Toronto,Electronics,Webcam,4,215.26,0,861.04,2025-09-26,2025-09-27,Delivered,PayPal,5,False,0.0,5
+100389,1099,Ethan Brown,ethan.brown1099@example.com,Canada,Vancouver,Electronics,Headphones,9,30.45,5,260.35,2025-04-16,2025-04-17,Processing,Bank Transfer,5,False,0.0,1
+100390,1174,Priya Singh,priya.singh1174@example.com,USA,New York,Home,Blender,10,337.77,5,3208.81,2025-09-05,2025-09-10,Delivered,Card,2,True,0.0,7
+100391,1035,Noah Wong,noah.wong1035@example.com,Germany,Hamburg,Electronics,Webcam,4,179.9,5,683.62,2025-04-03,2025-04-06,Delivered,Card,5,False,0.0,1
+100392,1033,Omar Khan,omar.khan1033@example.com,USA,Chicago,Fitness,Dumbbells,6,394.79,15,2013.43,2025-07-10,2025-07-15,Delivered,Bank Transfer,3,True,0.0,7
+100393,1160,Ava Smith,ava.smith1160@example.com,UK,London,Fitness,Yoga Mat,10,416.9,10,3752.1,2025-10-18,2025-10-21,Processing,UPI,5,False,0.0,5
+100394,1163,Ava Smith,ava.smith1163@example.com,India,Mumbai,Books,Cookbook,8,411.51,30,2304.46,2025-03-10,2025-03-12,Delivered,Card,1,True,0.0,4
+100395,1108,Arjun Singh,arjun.singh1108@example.com,Germany,Munich,Fitness,Dumbbells,3,211.25,5,602.06,2025-05-03,2025-05-07,Delivered,PayPal,1,True,0.0,2
+100396,1006,Arjun Singh,arjun.singh1006@example.com,Canada,Montreal,Fitness,Yoga Mat,6,164.17,15,837.27,2025-10-18,2025-10-23,Shipped,Card,5,True,0.0,3
+100397,1188,Mia Wong,mia.wong1188@example.com,USA,New York,Fitness,Dumbbells,7,375.67,20,2103.75,2025-06-15,2025-06-18,Delivered,Bank Transfer,4,True,0.0,6
+100398,1078,Mia Khan,mia.khan1078@example.com,USA,Austin,Electronics,Headphones,7,401.69,20,2249.46,2025-12-17,2025-12-18,Delivered,Bank Transfer,1,False,0.0,6
+100399,1187,Ava Lee,ava.lee1187@example.com,UK,Leeds,Electronics,Keyboard,1,248.17,25,186.13,2025-01-03,2025-01-05,Delivered,Bank Transfer,5,False,0.0,2
+100400,1174,Priya Khan,priya.khan1174@example.com,UK,Bristol,Fitness,Skipping Rope,3,447.05,5,1274.09,2025-09-21,2025-09-26,Processing,UPI,1,True,0.0,4
+100401,1170,Ethan Brown,ethan.brown1170@example.com,Canada,Montreal,Electronics,Keyboard,9,76.23,15,583.16,2025-10-25,2025-10-28,Delivered,Card,4,True,0.0,7
+100402,1137,Liam Garcia,liam.garcia1137@example.com,Germany,Berlin,Electronics,Webcam,3,440.14,25,990.32,2025-12-02,2025-12-07,Delivered,UPI,2,False,0.0,2
+100403,1134,Ethan Garcia,ethan.garcia1134@example.com,UK,London,Electronics,Headphones,3,52.57,30,110.4,2025-02-27,2025-03-02,Delivered,UPI,1,False,0.0,5
+100404,1106,Kai Lee,kai.lee1106@example.com,Canada,Montreal,Books,Atlas,4,81.0,20,259.2,2025-12-26,2025-12-27,Delivered,Bank Transfer,5,False,0.0,2
+100405,1004,Mia Patel,mia.patel1004@example.com,India,Mumbai,Home,Kettle,2,269.25,20,430.8,2025-05-24,2025-05-29,Delivered,PayPal,5,False,0.0,6
+100406,1077,Sofia Garcia,sofia.garcia1077@example.com,India,Mumbai,Fitness,Skipping Rope,2,38.42,30,53.79,2025-05-09,2025-05-13,Delivered,Bank Transfer,1,False,8.58,2
+100407,1146,Mia Müller,mia.muller1146@example.com,India,Delhi,Home,Kettle,4,31.14,20,99.65,2025-05-10,2025-05-14,Delivered,Bank Transfer,1,False,11.04,3
+100408,1162,Noah Lee,noah.lee1162@example.com,USA,Austin,Electronics,Keyboard,9,5.26,30,33.14,2025-08-21,2025-08-26,Delivered,PayPal,4,False,4.97,4
+100409,1111,Mia Lee,mia.lee1111@example.com,Canada,Montreal,Home,Blender,1,220.98,0,220.98,2025-08-29,2025-08-30,Processing,Card,1,True,0.0,3
+100410,1141,Mia Garcia,mia.garcia1141@example.com,USA,Chicago,Electronics,Webcam,3,388.44,10,1048.79,2025-06-22,2025-06-27,Delivered,Card,4,False,0.0,2
+100411,1004,Liam Taylor,liam.taylor1004@example.com,USA,New York,Books,Atlas,1,22.24,0,22.24,2025-01-26,2025-01-28,Delivered,Card,5,True,4.96,5
+100412,1093,Priya Khan,priya.khan1093@example.com,UK,Leeds,Electronics,Keyboard,6,327.87,0,1967.22,2025-12-27,2026-01-01,Processing,PayPal,4,True,0.0,1
+100413,1101,Ethan Smith,ethan.smith1101@example.com,UK,Bristol,Home,Lamp,3,412.45,15,1051.75,2025-03-23,2025-03-24,Processing,Card,2,False,0.0,7
+100414,1178,Lena Garcia,lena.garcia1178@example.com,USA,New York,Books,Novel,8,88.16,5,670.02,2025-02-04,2025-02-07,Shipped,Bank Transfer,1,True,0.0,1
+100415,1062,Zoe Lee,zoe.lee1062@example.com,USA,Chicago,Fitness,Yoga Mat,6,77.7,10,419.58,2025-08-07,2025-08-11,Delivered,Card,4,False,0.0,3
+100416,1045,Zoe Patel,zoe.patel1045@example.com,Germany,Berlin,Home,Lamp,8,431.1,15,2931.48,2025-05-31,2025-06-01,Delivered,Bank Transfer,1,False,0.0,7
+100417,1070,Zoe Patel,zoe.patel1070@example.com,Canada,Toronto,Fitness,Yoga Mat,7,412.45,20,2309.72,2025-08-13,2025-08-14,Delivered,PayPal,3,True,0.0,2
+100418,1034,Liam Müller,liam.muller1034@example.com,USA,New York,Books,Novel,5,271.78,30,951.23,2025-11-16,2025-11-21,Delivered,Card,3,True,0.0,1
+100419,1111,Lena Wong,lena.wong1111@example.com,UK,Bristol,Home,Kettle,9,410.5,25,2770.88,2025-02-05,2025-02-06,Delivered,Card,4,False,0.0,6
+100420,1128,Liam Khan,liam.khan1128@example.com,India,Pune,Fitness,Yoga Mat,5,50.91,10,229.1,2025-04-14,2025-04-18,Delivered,UPI,2,False,0.0,1
+100421,1160,Lena Taylor,lena.taylor1160@example.com,Canada,Toronto,Books,Cookbook,10,200.27,10,1802.43,2025-07-08,2025-07-13,Delivered,UPI,4,False,0.0,7
+100422,1194,Kai Wong,kai.wong1194@example.com,Germany,Hamburg,Fitness,Dumbbells,10,370.21,25,2776.58,2025-10-15,2025-10-19,Shipped,UPI,4,True,0.0,4
+100423,1014,Omar Khan,omar.khan1014@example.com,Germany,Munich,Home,Lamp,6,132.44,0,794.64,2025-08-08,2025-08-11,Delivered,PayPal,2,False,0.0,7
+100424,1049,Zoe Garcia,zoe.garcia1049@example.com,India,Pune,Electronics,Webcam,7,377.4,15,2245.53,2025-05-20,2025-05-23,Delivered,Card,2,True,0.0,2
+100425,1060,Mia Brown,mia.brown1060@example.com,India,Pune,Electronics,Webcam,3,254.57,10,687.34,2025-08-11,2025-08-15,Shipped,Card,1,True,0.0,1
+100426,1049,Sofia Smith,sofia.smith1049@example.com,USA,New York,Books,Atlas,9,376.38,5,3218.05,2025-12-24,2025-12-27,Processing,PayPal,3,True,0.0,7
+100427,1165,Mia Brown,mia.brown1165@example.com,Canada,Montreal,Fitness,Skipping Rope,7,235.02,20,1316.11,2025-06-25,2025-06-28,Delivered,Bank Transfer,2,True,0.0,6
+100428,1027,Zoe Khan,zoe.khan1027@example.com,Canada,Vancouver,Home,Blender,10,187.11,10,1683.99,2025-11-19,2025-11-20,Delivered,UPI,1,False,0.0,7
+100429,1005,Omar Patel,omar.patel1005@example.com,USA,New York,Home,Kettle,3,113.5,5,323.47,2025-10-12,2025-10-16,Delivered,Bank Transfer,3,False,0.0,3
+100430,1172,Kai Müller,kai.muller1172@example.com,Germany,Berlin,Fitness,Yoga Mat,8,108.15,20,692.16,2025-04-20,2025-04-24,Delivered,UPI,3,True,0.0,3
+100431,1192,Kai Smith,kai.smith1192@example.com,USA,Austin,Fitness,Skipping Rope,5,376.99,5,1790.7,2025-04-02,2025-04-06,Shipped,UPI,1,False,0.0,5
+100432,1045,Liam Lee,liam.lee1045@example.com,Germany,Munich,Fitness,Skipping Rope,2,63.86,20,102.18,2025-10-09,2025-10-10,Delivered,Card,1,True,0.0,4
+100433,1066,Sofia Wong,sofia.wong1066@example.com,Canada,Vancouver,Home,Lamp,2,47.56,5,90.36,2025-03-17,2025-03-21,Delivered,UPI,1,False,10.3,2
+100434,1100,Liam Wong,liam.wong1100@example.com,USA,New York,Fitness,Dumbbells,6,92.26,15,470.53,2025-05-03,2025-05-07,Delivered,UPI,4,True,0.0,3
+100435,1105,Priya Brown,priya.brown1105@example.com,India,Pune,Home,Blender,4,91.8,25,275.4,2025-03-27,2025-03-28,Delivered,PayPal,2,True,0.0,5
+100436,1198,Kai Khan,kai.khan1198@example.com,USA,New York,Books,Novel,2,412.44,5,783.64,2025-08-10,2025-08-15,Delivered,Card,1,False,0.0,1
+100437,1080,Priya Taylor,priya.taylor1080@example.com,India,Mumbai,Electronics,Webcam,5,202.26,25,758.47,2025-04-18,2025-04-21,Delivered,Card,1,False,0.0,3
+100438,1002,Kai Khan,kai.khan1002@example.com,Canada,Vancouver,Electronics,Headphones,7,495.24,25,2600.01,2025-08-29,2025-09-01,Returned,UPI,5,False,0.0,3
+100439,1084,Ethan Müller,ethan.muller1084@example.com,USA,Austin,Home,Lamp,4,72.92,30,204.18,2025-12-08,2025-12-12,Shipped,Card,2,False,0.0,1
+100440,1111,Mia Brown,mia.brown1111@example.com,UK,London,Fitness,Yoga Mat,10,328.5,5,3120.75,2025-10-30,2025-11-02,Delivered,Card,4,True,0.0,1
+100441,1103,Mia Lee,mia.lee1103@example.com,Canada,Toronto,Fitness,Skipping Rope,8,227.12,25,1362.72,2025-12-13,2025-12-16,Delivered,PayPal,3,True,0.0,4
+100442,1102,Ethan Singh,ethan.singh1102@example.com,UK,Leeds,Home,Lamp,6,199.49,30,837.86,2025-01-09,2025-01-11,Shipped,Bank Transfer,1,False,0.0,1
+100443,1184,Lena Wong,lena.wong1184@example.com,USA,New York,Books,Cookbook,10,438.17,25,3286.27,2025-06-16,2025-06-21,Delivered,PayPal,2,False,0.0,3
+100444,1161,Zoe Wong,zoe.wong1161@example.com,India,Delhi,Home,Kettle,5,487.92,5,2317.62,2025-03-22,2025-03-27,Delivered,Card,1,True,0.0,4
+100445,1050,Lena Smith,lena.smith1050@example.com,India,Mumbai,Electronics,Headphones,2,437.07,25,655.6,2025-12-02,2025-12-03,Shipped,Bank Transfer,4,True,0.0,7
+100446,1071,Ethan Lee,ethan.lee1071@example.com,Germany,Berlin,Electronics,Webcam,1,100.19,0,100.19,2025-09-17,2025-09-21,Delivered,PayPal,2,False,0.0,1
+100447,1133,Mia Brown,mia.brown1133@example.com,UK,London,Books,Novel,10,114.29,20,914.32,2025-04-27,2025-04-28,Delivered,PayPal,3,True,0.0,4
+100448,1082,Noah Khan,noah.khan1082@example.com,Canada,Montreal,Electronics,Webcam,10,329.76,15,2802.96,2025-07-25,2025-07-27,Delivered,Card,1,True,0.0,1
+100449,1085,Arjun Müller,arjun.muller1085@example.com,India,Pune,Books,Novel,8,148.1,15,1007.08,2025-08-09,2025-08-14,Delivered,PayPal,5,False,0.0,4
+100450,1033,Sofia Brown,sofia.brown1033@example.com,UK,Leeds,Home,Lamp,2,368.69,15,626.77,2025-06-30,2025-07-01,Delivered,Card,2,True,0.0,4
+100451,1050,Sofia Brown,sofia.brown1050@example.com,Canada,Vancouver,Electronics,Webcam,3,285.38,0,856.14,2025-06-23,2025-06-25,Processing,PayPal,3,True,0.0,6
+100452,1148,Mia Smith,mia.smith1148@example.com,Canada,Montreal,Home,Kettle,1,277.7,15,236.04,2025-01-21,2025-01-23,Delivered,Card,5,False,0.0,4
+100453,1168,Zoe Lee,zoe.lee1168@example.com,India,Mumbai,Fitness,Skipping Rope,1,415.13,30,290.59,2025-06-15,2025-06-19,Delivered,Bank Transfer,4,True,0.0,7
+100454,1156,Lena Patel,lena.patel1156@example.com,USA,Chicago,Home,Kettle,3,356.71,15,909.61,2025-05-08,2025-05-11,Shipped,Card,4,False,0.0,1
+100455,1061,Priya Brown,priya.brown1061@example.com,India,Pune,Books,Cookbook,6,18.16,5,103.51,2025-10-26,2025-10-29,Delivered,PayPal,5,False,0.0,1
+100456,1027,Ava Patel,ava.patel1027@example.com,India,Pune,Fitness,Yoga Mat,1,29.48,30,20.64,2025-11-12,2025-11-17,Delivered,Card,1,True,5.89,1
+100457,1031,Priya Patel,priya.patel1031@example.com,USA,New York,Home,Lamp,10,302.77,0,3027.7,2025-10-01,2025-10-04,Delivered,PayPal,5,False,0.0,3
+100458,1078,Ava Brown,ava.brown1078@example.com,Germany,Hamburg,Fitness,Dumbbells,5,245.67,15,1044.1,2025-01-12,2025-01-16,Shipped,UPI,3,False,0.0,2
+100459,1103,Liam Taylor,liam.taylor1103@example.com,Canada,Vancouver,Books,Cookbook,3,133.79,15,341.16,2025-11-04,2025-11-05,Delivered,Bank Transfer,3,True,0.0,1
+100460,1178,Priya Taylor,priya.taylor1178@example.com,USA,Austin,Home,Blender,6,212.23,15,1082.37,2025-05-25,2025-05-27,Shipped,PayPal,2,False,0.0,2
+100461,1179,Liam Brown,liam.brown1179@example.com,Germany,Berlin,Electronics,Headphones,8,380.17,30,2128.95,2025-06-01,2025-06-06,Processing,UPI,4,True,0.0,7
+100462,1000,Ethan Khan,ethan.khan1000@example.com,USA,Chicago,Home,Blender,4,414.17,10,1491.01,2025-12-11,2025-12-16,Shipped,Card,5,True,0.0,6
+100463,1141,Priya Taylor,priya.taylor1141@example.com,Germany,Hamburg,Books,Novel,1,282.81,30,197.97,2025-11-13,2025-11-17,Returned,PayPal,4,False,0.0,1
+100464,1059,Priya Müller,priya.muller1059@example.com,India,Mumbai,Electronics,Headphones,1,195.76,0,195.76,2025-01-19,2025-01-21,Shipped,UPI,1,False,0.0,7
+100465,1039,Zoe Taylor,zoe.taylor1039@example.com,USA,Austin,Books,Novel,9,138.99,25,938.18,2025-05-12,2025-05-13,Processing,Card,3,False,0.0,2
+100466,1111,Liam Patel,liam.patel1111@example.com,Canada,Toronto,Fitness,Dumbbells,2,263.35,20,421.36,2025-10-01,2025-10-06,Processing,PayPal,4,False,0.0,3
+100467,1006,Omar Müller,omar.muller1006@example.com,USA,Austin,Fitness,Dumbbells,7,160.8,5,1069.32,2025-07-16,2025-07-20,Shipped,Card,2,False,0.0,3
+100468,1066,Kai Brown,kai.brown1066@example.com,India,Delhi,Home,Lamp,4,284.23,5,1080.07,2025-04-05,2025-04-07,Processing,Card,4,True,0.0,3
+100469,1110,Sofia Smith,sofia.smith1110@example.com,USA,New York,Books,Cookbook,8,339.94,25,2039.64,2025-07-11,2025-07-14,Processing,Card,4,True,0.0,6
+100470,1054,Lena Wong,lena.wong1054@example.com,Canada,Toronto,Electronics,Headphones,1,37.71,20,30.17,2025-11-13,2025-11-17,Delivered,UPI,1,False,8.97,5
+100471,1118,Ethan Wong,ethan.wong1118@example.com,Germany,Hamburg,Home,Lamp,9,5.53,20,39.82,2025-03-23,2025-03-26,Shipped,Card,3,False,9.01,5
+100472,1092,Sofia Brown,sofia.brown1092@example.com,Canada,Toronto,Home,Lamp,7,110.08,0,770.56,2025-09-30,2025-10-05,Delivered,Card,1,True,0.0,5
+100473,1159,Zoe Wong,zoe.wong1159@example.com,India,Delhi,Home,Blender,5,447.78,20,1791.12,2025-09-26,2025-09-27,Processing,UPI,3,True,0.0,6
+100474,1036,Liam Lee,liam.lee1036@example.com,India,Mumbai,Home,Kettle,3,324.91,30,682.31,2025-11-20,2025-11-22,Delivered,Card,2,False,0.0,2
+100475,1011,Sofia Wong,sofia.wong1011@example.com,Germany,Hamburg,Electronics,Headphones,10,90.12,0,901.2,2025-04-19,2025-04-20,Processing,Card,5,True,0.0,3
+100476,1105,Mia Wong,mia.wong1105@example.com,Germany,Munich,Electronics,Headphones,4,445.68,15,1515.31,2025-03-20,2025-03-24,Shipped,UPI,5,True,0.0,1
+100477,1051,Kai Khan,kai.khan1051@example.com,Canada,Montreal,Electronics,Headphones,5,237.63,15,1009.93,2025-07-19,2025-07-23,Returned,Card,3,False,0.0,5
+100478,1141,Ethan Patel,ethan.patel1141@example.com,USA,New York,Fitness,Dumbbells,4,240.67,30,673.88,2025-07-13,2025-07-18,Delivered,Bank Transfer,3,True,0.0,4
+100479,1018,Sofia Taylor,sofia.taylor1018@example.com,Germany,Berlin,Home,Kettle,3,468.09,5,1334.06,2025-05-30,2025-06-02,Shipped,UPI,4,False,0.0,5
+100480,1115,Arjun Garcia,arjun.garcia1115@example.com,USA,Chicago,Fitness,Yoga Mat,5,34.45,15,146.41,2025-10-12,2025-10-13,Shipped,Bank Transfer,4,False,0.0,4
+100481,1197,Zoe Taylor,zoe.taylor1197@example.com,UK,Leeds,Fitness,Dumbbells,2,111.51,25,167.26,2025-10-19,2025-10-22,Processing,Bank Transfer,4,False,0.0,2
+100482,1018,Mia Taylor,mia.taylor1018@example.com,Canada,Montreal,Fitness,Skipping Rope,1,294.96,0,294.96,2025-03-31,2025-04-01,Processing,Bank Transfer,4,False,0.0,1
+100483,1060,Sofia Patel,sofia.patel1060@example.com,UK,Bristol,Fitness,Skipping Rope,3,101.77,25,228.98,2025-10-18,2025-10-22,Delivered,PayPal,5,False,0.0,7
+100484,1168,Ava Singh,ava.singh1168@example.com,Germany,Hamburg,Fitness,Dumbbells,2,341.37,25,512.06,2025-03-26,2025-03-30,Delivered,UPI,5,False,0.0,3
+100485,1106,Zoe Patel,zoe.patel1106@example.com,India,Mumbai,Fitness,Skipping Rope,5,110.98,25,416.17,2025-05-29,2025-06-03,Delivered,PayPal,1,True,0.0,1
+100486,1034,Ethan Smith,ethan.smith1034@example.com,UK,London,Fitness,Skipping Rope,9,54.08,20,389.38,2025-01-10,2025-01-12,Returned,Card,3,False,0.0,3
+100487,1042,Arjun Taylor,arjun.taylor1042@example.com,UK,Bristol,Fitness,Skipping Rope,2,107.46,25,161.19,2025-05-05,2025-05-07,Delivered,Bank Transfer,3,False,0.0,7
+100488,1152,Mia Taylor,mia.taylor1152@example.com,India,Delhi,Home,Lamp,1,214.25,25,160.69,2025-12-16,2025-12-17,Shipped,UPI,3,True,0.0,2
+100489,1172,Priya Taylor,priya.taylor1172@example.com,Germany,Hamburg,Electronics,Headphones,2,92.19,30,129.07,2025-06-11,2025-06-14,Shipped,Card,3,True,0.0,7
+100490,1072,Ethan Wong,ethan.wong1072@example.com,Germany,Munich,Books,Novel,6,71.67,10,387.02,2025-09-17,2025-09-20,Delivered,Card,4,True,0.0,4
+100491,1094,Noah Garcia,noah.garcia1094@example.com,Canada,Toronto,Home,Kettle,3,430.84,15,1098.64,2025-02-09,2025-02-13,Delivered,Card,3,True,0.0,7
+100492,1156,Noah Khan,noah.khan1156@example.com,Canada,Vancouver,Fitness,Dumbbells,5,163.6,20,654.4,2025-08-20,2025-08-24,Delivered,Card,2,True,0.0,5
+100493,1035,Lena Taylor,lena.taylor1035@example.com,Germany,Hamburg,Electronics,Headphones,1,183.58,5,174.4,2025-05-16,2025-05-17,Processing,PayPal,3,False,0.0,1
+100494,1041,Mia Khan,mia.khan1041@example.com,Germany,Munich,Home,Blender,4,32.36,25,97.08,2025-09-29,2025-10-01,Delivered,Card,5,True,6.84,4
+100495,1154,Mia Garcia,mia.garcia1154@example.com,UK,London,Fitness,Yoga Mat,5,181.9,25,682.12,2025-12-05,2025-12-08,Delivered,Bank Transfer,2,True,0.0,3
+100496,1037,Priya Müller,priya.muller1037@example.com,India,Mumbai,Fitness,Skipping Rope,5,136.08,20,544.32,2025-07-14,2025-07-16,Shipped,UPI,1,True,0.0,2
+100497,1154,Mia Lee,mia.lee1154@example.com,USA,Austin,Fitness,Dumbbells,6,307.19,10,1658.83,2025-02-07,2025-02-08,Delivered,PayPal,5,True,0.0,4
+100498,1099,Ethan Wong,ethan.wong1099@example.com,UK,Bristol,Home,Kettle,8,106.67,10,768.02,2025-06-23,2025-06-28,Processing,UPI,1,False,0.0,1
+100499,1198,Noah Garcia,noah.garcia1198@example.com,Canada,Montreal,Books,Novel,5,444.74,15,1890.14,2025-02-14,2025-02-18,Delivered,Card,4,True,0.0,5
+100500,1006,Ethan Singh,ethan.singh1006@example.com,India,Mumbai,Fitness,Dumbbells,9,465.18,20,3349.3,2025-06-14,2025-06-17,Delivered,Card,5,False,0.0,6
