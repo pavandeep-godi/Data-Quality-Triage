@@ -40,15 +40,26 @@ with st.sidebar:
             return None
 
 
-    GROQ_KEY = _secret("GROQ_API_KEY") or os.environ.get("GROQ_API_KEY") or ""
+    def _groq_secret():
+        try:
+            sec = st.secrets
+            for name in ("GROQ_API_KEY", "groq_api_key", "GROQ_KEY"):
+                if sec.get(name):
+                    return str(sec.get(name)).strip()
+            if "groq" in sec and sec["groq"].get("api_key"):
+                return str(sec["groq"]["api_key"]).strip()
+        except Exception:  # no secrets configured
+            pass
+        return ""
+
+
+    GROQ_KEY = _groq_secret() or (os.environ.get("GROQ_API_KEY") or "").strip()
     GROQ_MODEL = _secret("GROQ_MODEL") or os.environ.get("GROQ_MODEL") or llm.DEFAULT_MODEL
     st.radio("How should problems be analysed and fixes suggested?", [GROQ_LABEL, STD_LABEL],
              index=0 if GROQ_KEY else 1, key="analysis_mode", captions=[METHOD_HELP[GROQ_LABEL], METHOD_HELP[STD_LABEL]],
              help="Applies to the next ticket you raise. If the Smart AI is busy or unavailable, the ticket automatically "
                   "uses the Standard analysis, and you can switch from inside the ticket.")
-    if not GROQ_KEY:
-        st.warning("Smart AI analysis is not set up on this app yet, so Standard analysis will be used either way.")
-    else:
+    if GROQ_KEY:
         st.caption("Smart AI sends issue counts and up to 5 sample bad values per problem to Groq, never the full file. "
                    "Its free quota is shared by everyone using this app.")
     with st.expander("Free-tier limits"):
