@@ -29,24 +29,24 @@ Nothing is changed until a person clicks **Apply suggested fix**, and then only 
 Each ticket shows who wrote the analysis (`Groq (<model>)` or `Rule-based templates`).
 
 ### Choosing the analysis method
-When raising a ticket, the user picks one of two methods:
+When raising a ticket, the user picks one of two options (there is no way to enter an API key in the app):
 
-| Method | What it does | When to use |
+| Option | In plain words | When it is used |
 |---|---|---|
-| 🤖 **Groq AI** | LLM explains causes, picks the best fix per problem, writes the summary | Default when a key is configured |
-| ⚙️ **Standard** | Built-in rules and text, no AI, no external calls | Always available; use when Groq is rate-limited or down |
+| 🤖 **Smart AI analysis (Groq)** | An AI reads the problems like a data expert, explains what probably went wrong and suggests the best fix for each one | Default when the app has a key configured |
+| ⚙️ **Standard analysis** | Simple built-in checks and fixed advice. No AI. Always works, instantly | Always available, or when the AI is busy |
 
-- If Groq fails (rate limit, outage, bad reply), the ticket **falls back to Standard automatically** and says why.
-- From inside a ticket, **Retry with Groq AI** / **Switch to Standard analysis** re-runs the analysis (this resets the
-  working copy, because the fix choices change).
-- With no key configured, only Standard is offered.
+- If the Smart AI is rate-limited, down or returns a bad reply, the ticket **falls back to Standard automatically** and says why.
+- Inside a ticket, **Try Smart AI analysis (Groq) again** / **Switch to Standard analysis** re-runs the analysis (this resets
+  the working copy, because the fix choices change).
+- If no key is configured, only Standard is offered.
 
-### Setting up Groq
-- Streamlit Cloud: add `GROQ_API_KEY = "gsk_..."` under the app's **Secrets** (optionally `GROQ_MODEL`). Never commit the key.
-  The key's free-tier quota is shared by everyone using the app.
-- Local: put the same lines in `.streamlit/secrets.toml` (git-ignored), set `GROQ_API_KEY` in the environment, or paste a
-  key in the sidebar under *Use my own Groq key or model* (kept in the browser session only).
-- Default model is `llama-3.3-70b-versatile`; change it via `GROQ_MODEL` or the sidebar if Groq retires it.
+### Setting up Groq (app owner only)
+The key is never typed into the app. Set it once:
+- **Streamlit Cloud:** add `GROQ_API_KEY = "gsk_..."` under the app's **Secrets** (optionally `GROQ_MODEL`).
+- **Local:** put the same lines in `.streamlit/secrets.toml` (git-ignored) or set `GROQ_API_KEY` in the environment.
+- Never commit the key. Its free-tier quota is shared by everyone using the app.
+- Default model is `llama-3.3-70b-versatile`; set `GROQ_MODEL` if Groq retires it.
 - Sent to Groq: issue counts, expected ranges/values and up to 5 sample bad values per problem, never the full file.
 
 ## Limitations

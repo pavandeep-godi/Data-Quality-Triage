@@ -34,17 +34,14 @@ with st.sidebar:
             return None
 
 
-    with st.expander("Use my own Groq key or model"):
-        typed_key = st.text_input("Groq API key", type="password", placeholder="gsk_...",
-                                  help="Held in this browser session only. Normally the key is set once as GROQ_API_KEY in Secrets.")
-        GROQ_MODEL = st.text_input("Model", value=_secret("GROQ_MODEL") or os.environ.get("GROQ_MODEL") or llm.DEFAULT_MODEL)
-    GROQ_KEY = typed_key.strip() or _secret("GROQ_API_KEY") or os.environ.get("GROQ_API_KEY") or ""
+    GROQ_KEY = _secret("GROQ_API_KEY") or os.environ.get("GROQ_API_KEY") or ""
+    GROQ_MODEL = _secret("GROQ_MODEL") or os.environ.get("GROQ_MODEL") or llm.DEFAULT_MODEL
     if GROQ_KEY:
-        st.success("Groq AI is available. Choose it or the standard method when raising a ticket.")
+        st.success("Smart AI analysis is available. Pick a method when raising a ticket.")
         st.caption("The key's free-tier quota is shared by everyone using this app. Sent to Groq: issue counts and up to "
                    "5 sample bad values per problem, never the full file.")
     else:
-        st.info("Groq AI is not configured. The standard rule-based analysis is used.")
+        st.info("Smart AI analysis is not set up on this app, so the standard analysis is used.")
     with st.expander("Free-tier limits"):
         st.markdown("- **Rate limits** apply per organisation and vary by model. Roughly 30 requests/min, 12k tokens/min "
                     "and 1k requests/day have been reported for the default model; check your Groq console for live numbers.\n"
@@ -352,13 +349,18 @@ if page == PAGES[3]:
                      "data owner's name** with a suggested fix for each problem. It will not change any data.")
             owner = st.text_input("Data owner (the ticket will be raised in this name)", key="owner",
                                   placeholder="e.g. Priya Sharma")
-            GROQ_LABEL = "🤖 Groq AI: explains causes and picks the best fix (uses the shared free-tier quota)"
-            STD_LABEL = "⚙️ Standard: built-in rules, no AI, always available"
-            mode = st.radio("Analysis method", [GROQ_LABEL, STD_LABEL] if GROQ_KEY else [STD_LABEL], key="analysis_mode",
-                            help="If Groq is rate-limited or down, a ticket falls back to Standard automatically, "
-                                 "and you can switch methods later from the ticket.")
+            GROQ_LABEL = "🤖 Smart AI analysis (Groq)"
+            STD_LABEL = "⚙️ Standard analysis"
+            captions = {GROQ_LABEL: "An AI reads the problems like a data expert, explains what probably went wrong and "
+                                    "suggests the best fix for each one. Uses a limited free quota, so it can occasionally be busy.",
+                        STD_LABEL: "Simple built-in checks and fixed advice. No AI involved. Always works, instantly."}
+            options = [GROQ_LABEL, STD_LABEL] if GROQ_KEY else [STD_LABEL]
+            mode = st.radio("How should the problems be analysed?", options, key="analysis_mode",
+                            captions=[captions[o] for o in options],
+                            help="If the Smart AI is busy or unavailable, the ticket automatically uses the Standard "
+                                 "analysis instead, and you can switch from the ticket at any time.")
             if not GROQ_KEY:
-                st.caption("Groq AI is not configured for this app, so the standard method is used.")
+                st.caption("Smart AI analysis is not set up on this app, so the standard analysis is used.")
             if st.button("Yes, analyse and raise a ticket", type="primary", disabled=not owner.strip()):
                 with st.spinner("Analysing issues and drafting the ticket..."):
                     st.session_state.ticket = {"id": f"DQ-{dt.datetime.now():%Y%m%d-%H%M}", "opened": dt.datetime.now(),
@@ -488,7 +490,7 @@ if page == PAGES[4]:
                 if is_groq:
                     m1.button("⚙️ Switch to Standard analysis", on_click=reanalyse, args=(False,))
                 else:
-                    m1.button("🤖 Retry with Groq AI", on_click=reanalyse, args=(True,), type="primary")
+                    m1.button("🤖 Try Smart AI analysis (Groq) again", on_click=reanalyse, args=(True,), type="primary")
                 m2.caption("Switching re-runs the analysis and resets the working copy.")
             with st.expander(f"🤖 AI analysis: likely causes  ·  written by {t['engine']}", expanded=True):
                 for line in t["analysis"]:
